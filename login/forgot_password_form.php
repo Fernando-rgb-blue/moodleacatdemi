@@ -50,7 +50,7 @@ class login_forgot_password_form extends moodleform {
         // Hook for plugins to extend form definition.
         core_login_extend_forgot_password_form($mform);
 
-        $mform->addElement('header', 'searchbyusername', get_string('searchbyusername'), '');
+        $mform->addElement('header', 'searchbyusername', 'aasdasda', '');
 
         $purpose = user_edit_map_field_purpose($USER->id, 'username');
         $mform->addElement('text', 'username', get_string('username'), 'size="20"' . $purpose);
