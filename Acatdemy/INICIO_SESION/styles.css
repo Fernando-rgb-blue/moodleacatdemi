@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: auto;
+    margin: 0 auto;
+    /*padding: 20px;*/
+    box-sizing:border-box;
+    height: auto;
+}
+
+.welcome-section {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+.left-section {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+}
+
+.left-section {
+    position: relative;
+}
+
+.left-section p {
+    font-size: 50px;
+}
+.left-section p1 {
+    font-size: 20px;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 50%; /* Centra verticalmente el texto */
+    left: 50%; /* Centra horizontalmente el texto */
+    transform: translate(-50%, -50%); /* Centra exactamente el texto */
+    text-align: center; /* Centra el texto dentro del contenedor */
+    color: #fff; /* Color del texto */
+}
+
+.center-text {
+    text-align: center;
+}
+.left-section img {
+    width: 100%; /* La imagen ocupa el 100% del ancho de su contenedor */
+    height: 100%; /* La imagen ocupa el 100% de la altura de su contenedor */
+    object-fit: cover; /* Ajusta la imagen manteniendo su relación de aspecto y cubriendo el contenedor */
+    display: block; /* Elimina el espacio adicional por debajo de la imagen */
+    margin: 0 auto; /* Centra la imagen horizontalmente dentro de su contenedor */
+}
+
+.right-section {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.right-section a {
+    display: block;
+    margin-bottom: 10px;
+    color: #0066cc;
+    text-align: left;
+}
+.right-section label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.right-section input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+}
+
+.blue-button {
+    background-color:#01c4da;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+.blue-button1 {
+    background-color:#0117da;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.red-button {
+    background-color: #cc0000;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.button-group {
+    display: flex;
+    
+}
+.right-section button.blue-button,
+.right-section button.red-button {
+    display: block;
+    margin: 0 auto;
+}
+.right-section input {
+    width: 70%; /* Asegura que los elementos ocupen todo el ancho disponible */
+}
+.right-section button {
+    width: 20%; /* Asegura que los elementos ocupen todo el ancho disponible */
+}
+.right-section .button-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* Ajusta el margen superior según sea necesario */
+}
+
+.right-section .button-group button {
+    margin: 0 5px; /* Ajusta el espacio entre los botones según sea necesario */
+}
+
+.right-section a.forgot-password,
+.right-section a.create-account {
+    display: block;
+    margin-bottom: 10px;
+    color: #0066cc;
+    text-align: center;
+}
+
+.dark-section {
+    background-color:#12203d;
+    color: #fff;
+    padding: 20px;
+    /*margin-top: 20px;*/
+}
+
+
+.dark-section a {
+    color: #fff;
+}
+
+.Derechos{
+    display: flex;
+    margin-bottom: 10px;
+    padding-left: 85px;
+    color:#01c4da;
+}
+
+.footer-links {
+    display: flex;
+    margin-bottom: 20px;
+    padding-left: 85px;
+}
+
+.footer-links a {
+    margin-right: 40px; /* Espaciado entre los enlaces, ajusta según sea necesario */
+    text-decoration: none; /* Para quitar el subrayado predeterminado de los enlaces */
+    color: #ffffff; /* Color del texto, ajusta según sea necesario */
+}
+
+.social-icons a {
+    margin-right: 1px;
+    margin-top: 10px;
+    padding-left: 85px;
+}
+@media screen and (max-width: 768px) {
+    .welcome-section {
+        flex-direction: column;
+    }
+
+    .right-section {
+        margin-top: 20px; 
+    }
+}
