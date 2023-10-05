@@ -89,7 +89,7 @@ if ($mform->is_cancelled()) {
     //echo 'Nacimiento: ', $birth->birthdate; 
     //echo 'Tipo: ',gettype($birth->birthdate);
     //die;
-    $DB->insert_record('user2',$data);
+    $DB->insert_record('user',$data);
     //$DB->insert_record('birthdate2',$birth);
     
     redirect($redirect, 'Ha sido guardado con seguridad.', null, \core\output\notification::NOTIFY_SUCCESS);
