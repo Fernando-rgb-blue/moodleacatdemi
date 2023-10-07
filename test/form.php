@@ -11,7 +11,9 @@ class simplehtml_form extends moodleform
         //global $maxbytes = 11111111111111;
         $mform = $this->_form; // Don't forget the underscore! 
         
-        $mform->addElement('text', 'username', 'Nombre de usuario'); // Add elements to your form.
+        $condition = array('maxlength' => 20, 'minlength' => 4);
+        
+        $mform->addElement('text', 'username', 'Nombre de usuario', $condition); // Add elements to your form.
         $mform->setType('username', PARAM_NOTAGS); // Set type of element.
         $mform->addRule('username', 'Se requiere ingresar un nombre de usuario', 'required', null, 'client');
 
@@ -35,7 +37,7 @@ class simplehtml_form extends moodleform
         $mform->setType('birthdate', PARAM_NOTAGS); // Set type of element.
         $mform->addRule('birthdate', 'Se requiere ingresar una contraseña.', 'required', null, 'server');
 
-
+        
         $this->add_action_buttons();
     }
     //Custom validation should be added here
