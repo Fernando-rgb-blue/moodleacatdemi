@@ -65,7 +65,7 @@ if (!empty($courses)) {
 
         // Crea un botón que enlace al curso con estilos de Bootstrap y margen inferior.
         echo '<div class="col-md-6" style="margin-bottom: 10px;">';
-        echo '<form action="http://127.0.0.1/moodleacatdemi/course/view.php" method="GET">';
+        echo '<form action="http://167.172.137.234/moodleacatdemi/course/view.php" method="GET">';
         echo '<input type="hidden" name="id" value="' . $course->id . '">';
         echo '<button type="submit" class="btn btn-primary btn-block">' . $course->fullname . '</button>';
         echo '</form>';
