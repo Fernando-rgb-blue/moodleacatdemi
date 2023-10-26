@@ -27,6 +27,7 @@ if ($mform->is_cancelled()) {
   //$file = $mform->get_new_filename('test_file');
   // aquí se coloca la dirección a subir el archivo
   $fullpath = "uploads/".$file;
+  echo $fullpath; die;
   $success = $mform->save_file('test_file', $fullpath, true);
   //echo $fullpath; die;
 
