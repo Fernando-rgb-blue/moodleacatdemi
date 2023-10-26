@@ -3,7 +3,6 @@
 require_once('../config.php');
 global $CFG, $DB, $USER, $OUTPUT;
 require_once($CFG->dirroot.'/uploadfiles/form.php');
-
 $redirect = $CFG->wwwroot.'/uploadfiles/index.php';
 
 echo $OUTPUT->header();
@@ -26,7 +25,7 @@ if ($mform->is_cancelled()) {
   $file = $mform->get_new_filename('test_file');
   //$file = $mform->get_new_filename('test_file');
   // aquí se coloca la dirección a subir el archivo
-  $fullpath = "uploads/".$file;
+  $fullpath = "/var/www/html/moodleacatdemi/uploadfiles/uploads/" . $file;
   $success = $mform->save_file('test_file', $fullpath, true);
   //echo $fullpath; die;
 
