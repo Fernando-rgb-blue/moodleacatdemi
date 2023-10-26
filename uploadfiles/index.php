@@ -24,6 +24,7 @@ if ($mform->is_cancelled()) {
 
   // guardar archivo, el nombre no importa, pero en caso de cambiarlo, arreglar todas sus instancias
   $file = $mform->get_new_filename('test_file');
+  //$file = $mform->get_new_filename('test_file');
   // aquí se coloca la dirección a subir el archivo
   $fullpath = "uploads/".$file;
   $success = $mform->save_file('test_file', $fullpath, true);
