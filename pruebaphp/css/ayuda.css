@@ -1,0 +1,199 @@
+
+:root {
+    --bg: #fff;
+    --text: #7288a2;
+    --gray: #4d5974;
+    --lightgray: #e5e5e5;
+    --blue: #03b5d2;
+}
+
+/* header de ayuda */
+.headerayuda{
+    background: linear-gradient(rgba(45, 45, 45, 0.3),rgba(0,0,0,0.7)), url('../imagenes/ayudaheader.png');
+    height: 20vh;
+    justify-content: center;
+    align-items: center;
+}
+h3.ayudaheader {
+    font-family: 'Lato', 'Arial', sans-serif;
+    color: #e5e5e5;
+    font-weight: normal;
+    text-align: center;
+    font-size: 2.5rem;
+    text-shadow: 2px 1px 3px #90918f;
+}
+
+
+
+/* para el buscador de ayuda */
+.search-bar {
+    box-sizing: border-box;
+    position: relative;
+    padding-top: 30px;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-bottom: 0px;
+    width: 100%;
+}
+#autocomplete {
+    padding: 20px 25px;
+    width: 100%;
+    border: 2px solid #000000;
+    border-radius: 3px;
+    
+}
+.autocomplete-suggestions {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
+    display: none;
+}
+
+.tih4{
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#no-encontrado-mensaje{
+    padding: 10px 20px;
+}
+
+
+
+.fondoblanco{
+    background-color: #fff;
+}
+
+.accordion .accordion-item {
+    border-bottom: 1px solid var(--lightgray);
+}
+
+.accordion button[aria-expanded='true'] {
+    border-bottom: 1px solid var(--blue);
+}
+
+.accordion button {
+    position: relative;
+    display: block;
+    text-align: left;
+    width: 100%;
+    padding: 1em 0;
+    color: var(--text);
+    font-size: 1.15rem;
+    font-weight: 400;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.accordion button:hover, .accordion button:focus {
+    cursor: pointer;
+    color: var(--blue);
+}
+
+.accordion button:hover::after, .accordion button:focus::after {
+    cursor: pointer;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+}
+
+.accordion .accordion-title {
+    padding: 1em 1.5em 1em 0;
+}
+
+.accordion .icon {
+    display: inline-block;
+    position: absolute;
+    top: 18px;
+    right: 0;
+    width: 22px;
+    height: 22px;
+    border: 1px solid;
+    border-radius: 22px;
+}
+
+.accordion .icon::before {
+    display: block;
+    position: absolute;
+    content: '';
+    top: 9px;
+    left: 5px;
+    width: 10px;
+    height: 2px;
+    background: currentColor;
+}
+
+.accordion .icon::after {
+    display: block;
+    position: absolute;
+    content: '';
+    top: 5px;
+    left: 9px;
+    width: 2px;
+    height: 10px;
+    background: currentColor;
+}
+
+.accordion button[aria-expanded='true'] {
+    color: var(--blue);
+}
+
+.accordion button[aria-expanded='true'] .icon::after {
+    width: 0;
+}
+
+.accordion button[aria-expanded='true'] + .accordion-content {
+    opacity: 1;
+    max-height: 9em;
+    transition: all 200ms linear;
+    will-change: opacity, max-height;
+}
+
+.accordion .accordion-content {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 200ms linear, max-height 200ms linear;
+}
+
+.accordion .accordion-content p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 2em 0;
+}
+
+/* iconos de escribenos */
+.iconosContacto i{
+    font-size: 2.5rem;
+    color: #4d5974;
+    margin-right: 15px;
+    padding-bottom: 10px;
+}
+.iconosContacto i:hover{
+    color: #03b5d2
+}
+
+/* pa las cookies */
+.negrita{
+    font-size: 1.4rem;
+}
+
+@media only screen and (max-width: 900px) { 
+    h3.ayudaheader {
+        font-size: 1.7rem;
+    }
+    .search-bar {
+        padding-top: 30px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-bottom: 0px;
+    }
+    .accordion .accordion-title {
+        font-size: 0.84rem;
+    }
+    .negrita{
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,624 @@
+<?php
+    require_once('../config.php');
+    global $CFG, $OUTPUT, $PAGE, $DB, $USER;
+    $redirect = $CFG->wwwroot.'/pruebaphp/luis.php';
+
+    // $PAGE->set_url('/test/payments.php');
+    // $PAGE->set_pagelayout('popup');
+    // echo $OUTPUT->header();
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/script.js" defer></script>
+    <title>Home</title>
+</head>
+<body>
+    <header class="page-wrapper">
+            <div class="nav-wrapper">
+                <div class="grad-bar"></div>
+                    <nav class="navbar">
+                        <a><img src="que/cambiado.svg" id="logoHome" alt="Company Logo" class="lo"></a>
+                        <div class="menu-toggle" id="mobile-menu">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                        <ul class="nav no-search">
+                            <li class="nav-item" id="ocultar">
+                                <img src="que/lupa.svg" height="20px" alt="" id="lupaImagen">
+                                <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
+                                <ul id="suggestions" class="dropdown-content"></ul>
+                            </li>
+                            <li class="nav-item"><a href="#" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="help.php" id="ayuda">Ayuda</a></li>
+                            <li class="nav-item">
+                                <div class="dropdown" id="idiomaDropdown">
+                                    <a><span id="idioma">Idioma</span></a>
+                                    <div class="dropdown-content">
+                                        <div id="ingles" class="dropdown-option" onclick="cambiarIdioma('en')">Inglés</div>
+                                        <div id="espanol" class="dropdown-option" onclick="cambiarIdioma('es')">Español</div>
+                                        <!-- <div id="frances" class="dropdown-option" onclick="cambiarIdioma('fr')">Francés</div> -->
+                                        <div id="portugues" class="dropdown-option" onclick="cambiarIdioma('pt')">Portugués</div>
+
+                                    </div>
+                                </div>
+                            </li>
+
+                            <!-- <li class="nav-item iniciar"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/INICIO_SESION/index.html">Ingresar</a></li>
+                            <li class="nav-item crear"><a id="registrarse" href="#">Registrarse</a></li> -->
+                            <?php
+                                if (!empty($USER->firstname) && !empty($USER->lastname)) {
+                                    echo '<li class="nav-item iniciar">';
+                                    echo '<a id="desloguear" href="" target="_blank" onclick="abrirVentanaYRecargar()">Salir sesión</a>';
+                                    echo '</li>';
+                                    echo '<li class="nav-item crear">';
+                                    echo '<img src="que/usuario.svg" height="20px" alt="" id="imgusuario">';
+                                    echo '<a href="http://167.172.137.234/moodleacatdemi/user/profile.php">';
+                                    echo '<span>' . strtoupper(substr($USER->firstname, 0, 1)) . strtoupper(substr($USER->lastname, 0, 1)) . '</span>';
+                                    echo '</a>';
+                                    echo '</li>';
+                                } else {
+                                    echo '<li class="nav-item iniciar prim"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/Inter_Inic_Sess/index.html">Ingresar</a></li>';
+                                    echo '<li class="nav-item crear prim"><a id="registrarse" href="#">Registrarse</a></li>';
+                                }
+                            ?>
+                            
+                        </ul>
+                    </nav>
+                </div>
+    </header>
+    <main>
+        <div class="relleno"></div>
+        <!-- parte 1 -->
+        <section class="headline">
+            <div class="tamdeH1">
+                <h1 id="descubre">Descubre un mundo de conocimiento tecnológico en línea</h1>
+            </div>
+        </section>
+        <!-- mesaje de descripcion -->
+        <section class="feature-container des">
+            <p id="somos"><strong> Somos una empresa dedicada a facilitar educación de calidad en línea en las áreas de <br>tecnología de la información y comunicación.</strong></p>
+            <p>
+                <a id="mas" href="#nosotros" class="celeste">Más información</a>
+            </p>
+            
+        </section>
+
+        <div class="colorblanco">
+            <section class="features">
+                <div class="feature-container cuatropor ini">
+                    <div class="center-content">
+                        <h3 class="explora ti" id="explora">Explora el futuro de la tecnología e informática con nosotros</h3>
+                        <p class="explora" id="accede">Descubre productos innovadores y accede a cursos gratuitos para potenciar tus habilidades y conocimientos.</p>
+                        <a href="#" class="celeste" id="registrate">Regístrate Ahora</a>
+                    </div>
+                </div>
+                <div class="feature-container trespor ini">
+                    <img src="imagenes/estudiando-re.png" alt="imágen de alguien estudiando" >
+                </div>
+            </section>    
+        </div>
+        <!-- texto antes de los cursos -->
+        <section class="features dos">
+            <div class="feature-container cuatropor ini">
+                <div class="center-content">
+                    <h3 class="explora ti" id="descubre2">Descubre Nuestros Cursos</h3>
+                </div>
+            </div>
+        </section> 
+        
+        <!-- cursos -->
+        <section class="features dos">
+            <div class="feature-container curceleste">
+                <img src="imagenes/py1.png" class="imagcurso" alt="Flexbox Feature">
+                <div class="contenidocurso">
+                    <p id="cont1"><span class="tamcurso" id="nomc1">Curso de programación en Python </span><br> <br>
+                        <b id="creador1">Un curso de Urcia Peláez</b><br><span id="contC1">En este curso explorarás capacidades más allá de los fundamentos además aprenderás a desarrollar aplicaciones robustas, automatizar tareas, crear interfaces gráficas de usuario (GUI), entre otras cosas.</span><br> 
+                    <br> 
+                    <b id="contenido1">Contenido:</b> <span id="horas1">120 horas</span></p>
+                </div>
+                
+                <a href="#" class="celeste curso" id="ir1">Ir al curso</a>    
+            </div>
+
+            <div class="feature-container curceleste">
+                <img src="imagenes/py2.png" class="imagcurso" alt="Flexbox Feature">
+                <div class="contenidocurso">
+                    <p id="cont1"><span class="tamcurso" id="nomc2">Curso de programación en Python </span><br> <br>
+                        <b id="creador2">Un curso de Urcia Peláez</b><br><span id="contC2">En este curso explorarás capacidades más allá de los fundamentos además aprenderás a desarrollar aplicaciones robustas, automatizar tareas, crear interfaces gráficas de usuario (GUI), entre otras cosas.</span><br> 
+                    <br> 
+                    <b id="contenido2">Contenido:</b> <span id="horas2">120 horas</span></p>
+                </div>
+                
+                <a href="#" class="celeste curso" id="ir2">Ir al curso</a>    
+            </div>
+
+            <div class="feature-container curceleste">
+                <img src="imagenes/Topologías y Redes2.png" class="imagcurso" alt="Flexbox Feature">
+                <div class="contenidocurso">
+                    <p id="cont1"><span class="tamcurso" id="nomc3">Curso de programación en Python </span><br> <br>
+                        <b id="creador3">Un curso de Urcia Peláez</b><br><span id="contC3">En este curso explorarás capacidades más allá de los fundamentos además aprenderás a desarrollar aplicaciones robustas, automatizar tareas, crear interfaces gráficas de usuario (GUI), entre otras cosas.</span><br> 
+                    <br> 
+                    <b id="contenido3">Contenido:</b> <span id="horas3">120 horas</span></p>
+                </div>
+                
+                <a href="#" class="celeste curso" id="ir3">Ir al curso</a>    
+            </div>
+            
+        </section>
+
+
+        <section class="features dos">
+
+            <div class="feature-container curceleste">
+                <img src="imagenes/Topologías y Redes3.png" class="imagcurso" alt="Flexbox Feature">
+                <div class="contenidocurso">
+                    <p id="cont1"><span class="tamcurso" id="nomc4">Curso de programación en Python </span><br> <br>
+                        <b id="creador4">Un curso de Urcia Peláez</b><br><span id="contC4">En este curso explorarás capacidades más allá de los fundamentos además aprenderás a desarrollar aplicaciones robustas, automatizar tareas, crear interfaces gráficas de usuario (GUI), entre otras cosas.</span><br> 
+                    <br> 
+                    <b id="contenido4">Contenido:</b> <span id="horas4">120 horas</span></p>
+                </div>
+                
+                <a href="#" class="celeste curso" id="ir4">Ir al curso</a>    
+            </div>
+
+
+            <div class="feature-container curceleste">
+                <img src="imagenes/Topologías y Redes2.png" class="imagcurso" alt="Flexbox Feature">
+                <div class="contenidocurso">
+                    <p id="cont1"><span class="tamcurso" id="nomc5">Curso de programación en Python </span><br> <br>
+                        <b id="creador5">Un curso de Urcia Peláez</b><br><span id="contC5">En este curso explorarás capacidades más allá de los fundamentos además aprenderás a desarrollar aplicaciones robustas, automatizar tareas, crear interfaces gráficas de usuario (GUI), entre otras cosas.</span><br> 
+                    <br> 
+                    <b id="contenido5">Contenido:</b> <span id="horas5">120 horas</span></p>
+                </div>
+                
+                <a href="#" class="celeste curso" id="ir5">Ir al curso</a>    
+            </div>
+
+            <div class="feature-container curceleste">
+                <img src="imagenes/Topologías y Redes2.png" class="imagcurso" alt="Flexbox Feature">
+                <div class="contenidocurso">
+                    <p id="cont1"><span class="tamcurso" id="nomc6">Curso de programación en Python </span><br> <br>
+                        <b id="creador6">Un curso de Urcia Peláez</b><br><span id="contC6">En este curso explorarás capacidades más allá de los fundamentos además aprenderás a desarrollar aplicaciones robustas, automatizar tareas, crear interfaces gráficas de usuario (GUI), entre otras cosas.</span><br> 
+                    <br> 
+                    <b id="contenido6">Contenido:</b> <span id="horas6">120 horas</span></p>
+                </div>
+                
+                <a href="#" class="celeste curso" id="ir6">Ir al curso</a>    
+            </div>
+            
+        </section>
+
+
+        <section class="features dos">
+            <a href="#" class="vercursos" id="vercursos">Ver más cursos de Acatdemy →</a>
+        </section>
+        
+        
+        
+        <!--SOBRE NOSOTROS -->
+        <section class="features dos" id="nosotros">
+            <div class="feature-container cuatropor ini">
+                <div class="center-content">
+                    <h3 class="explora ti" id="sobre">SOBRE NOSOTROS</h3>
+                </div>
+            </div>
+        </section>
+        <div class="colorblanco">
+            <section class="features dos">
+                
+                <div class="feature-container cuatropor">
+                    <div class="tabs">
+                        <input type="radio" name="tabs" id="tabone" checked="checked">
+                        <label for="tabone" class="op1" id="n1">Nosotros</label>
+                        <div class="tab">
+                            <p><span id="cont1n">Somos una empresa dedicada a facilitar educación de calidad en línea en las áreas de tecnología de la información y comunicación.
+                            </span> <span id="cont12n"> Ofrecemos cursos interactivos, herramientas de aprendizaje y asesoramiento personalizado para ayudar a nuestros estudiantes a prepararse para una profesión en el campo de la informática.</span>
+                            <span id="cont13n"> Contamos con diversos programas de estudios diseñados por expertos, además nuestra plataforma de aprendizaje en línea permite el acceso a los cursos desde cualquier lugar y en cualquier momento y estamos comprometidos en hacer del aprendizaje de la tecnología una experiencia simple, interactiva y al alcance de todos.</span></p>
+                        </div>
+                        
+                        <input type="radio" name="tabs" id="tabtwo">
+                        <label for="tabtwo" class="op1" id="n2">Misión</label>
+                        <div class="tab">
+                            <p><span id="cont2n">Brindar educación informática accesible y efectiva a través de nuestra plataforma de aprendizaje en línea.</span>
+                                <span id="cont21n"> Nos comprometemos a ofrecer cursos actualizados y relevantes dictados por expertos utilizando metodologías innovadoras y efectivas.</span>
+                                <span id="cont22n"></span> Impulsamos el aprendizaje individualizado y acompañamiento personalizado de cada estudiante.
+                                <span id="cont23n"> Trabajamos para transformar vidas mediante el poder educativo de la tecnología y formar profesionales preparados para los trabajos del futuro.</span></p>
+                        </div>
+                        
+                        <input type="radio" name="tabs" id="tabthree">
+                        <label for="tabthree" class="op1" id="n3">Visión</label>
+                        <div class="tab">
+                            <p id="cont3n">Somos una empresa que quiere situarse en los próximos años como referente en la educación informática en línea en Perú gracias a nuestra oferta de cursos de calidad, herramientas innovadoras y docentes altamente capacitados, anhelamos convertirnos en verdaderos expertos del campo informático tanto a las personas que aprueben nuestros cursos como a quienes asesoramos, para que puedan acceder a las mejores oportunidades laborales y así contribuir al desarrollo digital de nuestra sociedad en la próxima década.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-container trespor">
+                    <img src="que/cambiado.svg" alt="Flexbox Feature" height="150px">
+                </div>
+            </section>
+        </div>
+        
+        <!-- descubre -->
+        <section class="features descubre">
+            <div class="feature-container sesentapor ini">
+                <div class="center-content">
+                    <h3 id="trad" class="explora ti blanco">Descubre por dónde comenzar</h3>
+                    <p id="trad1" class="explora blanco">Realiza el test y descubre que cursos se adaptarían a ti.</p>
+                    <a href="#" class="celeste test" id="test">Realizar Test</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- ¿QUÉ ESPERAS DE UN CUSO DE ACATDEMY? -->
+        <section class="features dos">
+            <div class="feature-container cuatropor ini">
+                <div class="center-content">
+                    <h3 class="explora ti" id="que_es">¿QUÉ ESPERAS DE UN CUSO DE ACATDEMY?</h3>
+                </div>
+            </div>
+        </section>  
+        <section class="esperas">
+            <div class="columna1">
+                <div class="cont">
+                    <img src="que/q1.svg" alt="" height="40px">
+                    <div>
+                        <p class="negrita"><b id="esperar1">Cursos de alta calidad</b></p>
+                        <p id="esp1">Encontrarás cursos de alta calidad y que están actualizados con las últimas tendencias tecnológicas.</p>
+                    </div>
+                </div>
+                <div class="cont">
+                    <img src="que/q2.svg" alt="" height="40px">
+                    <div>
+                        <p class="negrita"><b id="esperar2">Impartidos por expertos</b></p>
+                        <p id="esp2">Los instructores son expertos en sus campos y tienen experiencia real en la industria de la informática y la tecnología.</p>
+                    </div>
+                </div>
+                <div class="cont">
+                    <img src="que/q3.svg" alt="" height="40px">
+                    <div>
+                        <p class="negrita"><b id="esperar3">Flexibilidad</b></p>
+                        <p id="esp3">Los cursos ofrecen flexibilidad para que los estudiantes puedan aprender a su propio ritmo y acceder al contenido desde cualquier lugar y en cualquier momento.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="columna2">
+                <div class="cont">
+                    <img src="que/q4.svg" alt="" height="40px">
+                    <div>
+                        <p class="negrita"><b id="esperar4">Son evaluativos</b></p>
+                        <p id="esp4">Los cursos incluyen evaluaciones y retroalimentación regular para medir el progreso y garantizar un aprendizaje efectivo</p>
+                    </div>
+                </div>
+                <div class="cont">
+                    <img src="que/q5.svg" alt="" height="40px">
+                    <div>
+                        <p class="negrita"><b id="esperar5">Interactividad</b></p>
+                        <p id="esp5">Los estudiantes pueden participar en actividades interactivas, discusiones y proyectos colaborativos para mejorar su comprensión y habilidades.</p>
+                    </div>
+                </div>
+                <div class="cont">
+                    <img src="que/q6.svg" alt="" height="40px">
+                    <div>
+                        <p class="negrita"><b id="esperar6">Conseguir certificado</b></p>
+                        <p id="esp6">Por cada curso completado obtienes un certificado personalizado y firmado por el profesor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        
+    </main>
+    <footer>
+        <div class="footer">
+
+            <div class="row reser">
+                <ul>
+                    <li id="fo1">© 2023 Acatdemy Todos los derechos reservadoss</li>
+                <ul>
+                
+            </div>
+            
+            <div class="row">
+                <ul>
+                    <li id="fo2"><a href="index.html#nosotros">Sobre nosotros</a></li>
+                    <li id="fo3"><a href="#">Cursos</a></li>
+                    <li id="fo4"><a href="#">Términos y condiciones</a></li>
+                    <li id="fo5"><a href="cookies.html">Políticas sobre cookies</a></li>
+                    <li id="fo6"><a href="#">Contáctanos</a></li>
+                    <li id="fo7"><a href="help.html">Ayuda</a></li>
+                </ul>
+            </div>
+            
+            <div class="row iconos">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-instagram"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    
+    
+        <script>
+
+            // inicio de busqueda
+            // Array de opciones de sugerencias
+            const opciones = ["programacion en python", "redes y topologias", "switch"];
+            const lupaImagen = document.getElementById("lupaImagen");
+
+            // Maneja el clic en la imagen de la lupa
+            lupaImagen.addEventListener("click", function () {
+                const searchInput = document.getElementById("search-input");
+
+                // Activa el input de búsqueda y enfócalo
+                searchInput.classList.add("search-active");
+                searchInput.focus();
+            });
+            // Función para mostrar sugerencias
+            function mostrarSugerencias(inputValue) {
+                const suggestions = opciones.filter((opcion) =>
+                    opcion.toLowerCase().includes(inputValue.toLowerCase())
+                );
+
+                const suggestionsList = document.getElementById("suggestions");
+
+                // Limpia la lista de sugerencias previas
+                suggestionsList.innerHTML = "";
+
+                // Calcula la posición y el ancho de la barra de búsqueda
+                const searchInput = document.getElementById("search-input");
+                const inputRect = searchInput.getBoundingClientRect();
+                const inputWidth = inputRect.width;
+                const inputTop = inputRect.bottom;
+
+                // Actualiza la posición de la lista de sugerencias
+                suggestionsList.style.width = inputWidth + "px";
+                suggestionsList.style.top = inputTop + "px";
+                suggestionsList.style.left = inputRect.left + "px";
+
+                // Muestra u oculta la lista de sugerencias según si hay coincidencias
+                if (inputValue.length > 0 && suggestions.length > 0) {
+                    // Agrega las sugerencias coincidentes a la lista
+                    suggestions.forEach((suggestion) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = suggestion;
+                    listItem.classList.add("dropdown-option");
+                    suggestionsList.appendChild(listItem);
+                    });
+
+                    suggestionsList.style.display = "block";
+                } else if(inputValue.length === 0) {
+                        suggestionsList.style.display = "none"; // Oculta la lista si está vacío
+                }else {
+                // Si no hay coincidencias, muestra el mensaje "Curso no encontrado"
+                const listItem = document.createElement("li");
+                listItem.textContent = "Curso no encontrado";
+                listItem.classList.add("dropdown-option");
+                suggestionsList.appendChild(listItem);
+                suggestionsList.style.display = "block";
+                }
+            }
+
+            // Función para manejar el redireccionamiento
+            function redirigirURL(url) {
+                window.location.href = url;
+            }
+
+            // Maneja el clic en una sugerencia para llenar la barra de búsqueda
+            document.getElementById("suggestions").addEventListener("click", function (event) {
+                const clickedSuggestion = event.target.textContent;
+                this.style.display = "none";
+
+                switch (clickedSuggestion) {
+                    case "Curso no encontrado":
+                    // Aquí puedes manejar el comportamiento personalizado para "Curso no encontrado"
+                    // Por ejemplo, mostrar un mensaje de error o realizar otra acción.
+                    break;
+                    case "redes y topologias":
+                    // Redirige al usuario a cursos.html
+                    redirigirURL("cursos.html");
+                    break;
+                    case "switch":
+                    // Redirige al usuario a home.html
+                    redirigirURL("home.html");
+                    break;
+                    case "programacion en python":
+                    // Redirige al usuario a google.com
+                    redirigirURL("https://www.google.com");
+                    break;
+                    default:
+                    // Por defecto, redirige al usuario a home.html
+                    redirigirURL("home.html");
+                }
+            });
+
+            // Maneja el evento de cambio en el input de búsqueda
+            document.getElementById("search-input").addEventListener("input", function () {
+                const inputValue = this.value;
+                mostrarSugerencias(inputValue);
+            });
+
+            // Cerrar la lista de sugerencias si se hace clic en cualquier lugar fuera de ella
+            document.addEventListener("click", function (event) {
+                if (!event.target.closest(".search-input")) {
+                    document.getElementById("suggestions").style.display = "none";
+                }
+            });
+            // fin de busqueda
+
+
+            // para poner un 'a' a mi img del logo
+            var miImagen2 = document.getElementById('logoHome');
+
+            // Agregamos un evento de clic a la imagen
+            miImagen2.addEventListener('click', function() {
+                // Redirigimos la página a "google.com" al hacer clic en la imagen
+                window.location.href = 'index.php';
+            });
+
+            // PARA EL IDIOMA
+            function traducirPlaceholder(idElemento, idioma) {
+                const placeholderOriginal = document.getElementById(idElemento).getAttribute("placeholder");
+                const urlTraduccion = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${idioma}&dt=t&q=${encodeURIComponent(placeholderOriginal)}`;
+
+                fetch(urlTraduccion)
+                    .then(response => response.json())
+                    .then(data => {
+                        const placeholderTraducido = data[0][0][0];
+                        document.getElementById(idElemento).setAttribute("placeholder", placeholderTraducido);
+                    })
+                    .catch(error => {
+                        console.error(`Error al traducir el placeholder de ${idElemento}:`, error);
+                    });
+            }
+
+            function traducirElemento(idElemento, idioma) {
+                const textoOriginal = document.getElementById(idElemento).textContent;
+                const urlTraduccion = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${idioma}&dt=t&q=${encodeURIComponent(textoOriginal)}`;
+
+                fetch(urlTraduccion)
+                    .then(response => response.json())
+                    .then(data => {
+                        const textoTraducido = data[0][0][0];
+                        document.getElementById(idElemento).textContent = textoTraducido;
+                    })
+                    .catch(error => {
+                        console.error(`Error al traducir ${idElemento}:`, error);
+                    });
+            }
+
+            function cambiarIdioma(idioma) {
+                const elementosTraducibles = {
+                    cursos: "cursos",
+                    ayuda: "ayuda",
+                    buscar: "search-input",
+                    idioma: "idioma",
+                    espanol: "espanol",
+                    portugues: "portugues",
+                    ingles: "ingles",
+                    desloguear: "desloguear",
+                    iniciar: "iniciar",
+                    registrarse: "registrarse",
+                    somos: "somos",
+                    mas: "mas",
+                    descubre: "descubre",
+                    explora: "explora",
+                    accede: "accede",
+                    registrate: "registrate",
+                    descubre2: "descubre2",
+                    fo1: "fo1",
+                    fo2: "fo2",
+                    fo3: "fo3",
+                    fo4: "fo4",
+                    fo5: "fo5",
+                    fo5: "fo6",
+                    fo5: "fo7",
+                    sobre: "sobre",
+                    n1: "n1",
+                    n2: "n2",
+                    n3: "n3",
+                    cont1n: "cont1n",
+                    cont12n: "cont12n",
+                    cont13n: "cont13n",
+                    cont2n: "cont2n",
+                    cont21n: "cont21n",
+                    cont22n: "cont22n",
+                    cont23n: "cont23n",
+                    cont3n: "cont3n",
+                    que_es: "que_es",
+                    nomc1: "nomc1",
+                    nomc2: "nomc2",
+                    nomc3: "nomc3",
+                    nomc4: "nomc4",
+                    nomc5: "nomc5",
+                    nomc6: "nomc6",
+                    creador1: "creador1",
+                    contC1: "contC1",
+                    contenido1: "contenido1",
+                    horas1: "horas1",
+                    ir1: "ir1",
+                    creador2: "creador2",
+                    contC2: "contC2",
+                    contenido2: "contenido2",
+                    horas2: "horas2",
+                    ir2: "ir2",
+                    creador3: "creador3",
+                    contC3: "contC3",
+                    contenido3: "contenido3",
+                    horas3: "horas3",
+                    ir3: "ir3",
+                    creador4: "creador4",
+                    contC4: "contC4",
+                    contenido4: "contenido4",
+                    horas4: "horas4",
+                    ir4: "ir4",
+                    creador5: "creador5",
+                    contC5: "contC5",
+                    contenido5: "contenido5",
+                    horas5: "horas5",
+                    ir5: "ir5",
+                    creador6: "creador6",
+                    contC6: "contC6",
+                    contenido6: "contenido6",
+                    horas6: "horas6",
+                    ir6: "ir6",
+                    vercursos: "vercursos",
+                    trad: "trad",
+                    trad1: "trad1",
+                    test: "test",
+                    esperar1: "esperar1",
+                    esp1: "esp1",
+                    esperar2: "esperar2",
+                    esp2: "esp2",
+                    esperar3: "esperar3",
+                    esp3: "esp3",
+                    esperar4: "esperar4",
+                    esp4: "esp4",
+                    esperar5: "esperar5",
+                    esp5: "esp5",
+                    esperar6: "esperar6",
+                    esp6: "esp6"
+
+                };
+                for (const id in elementosTraducibles) {
+                    if (elementosTraducibles.hasOwnProperty(id)) {
+                        const elementoHtml = document.getElementById(elementosTraducibles[id]);
+
+                        if (id === "buscar") {
+                            traducirPlaceholder(elementosTraducibles[id], idioma);
+                        } else if (elementoHtml) {
+                            traducirElemento(elementosTraducibles[id], idioma);
+                        }
+                    }
+                }
+
+                
+            }
+        </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
