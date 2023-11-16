@@ -1,4 +1,4 @@
-// PARA EL IDIOMA TermsAndConditions.
+// PARA EL IDIOMA
 function traducirPlaceholder(idElemento, idioma) {
     const placeholderOriginal = document.getElementById(idElemento).getAttribute("placeholder");
     const urlTraduccion = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${idioma}&dt=t&q=${encodeURIComponent(placeholderOriginal)}`;
@@ -22,16 +22,7 @@ function traducirElemento(idElemento, idioma) {
         .then(response => response.json())
         .then(data => {
             const textoTraducido = data[0][0][0];
-            if ( (idElemento == 'ayuda' || idElemento == 'fo7') && idioma == 'en'){
-                document.getElementById(idElemento).textContent = 'Help';
-            }else if ( idElemento == 'iniciar' && idioma == 'en'){
-                document.getElementById(idElemento).textContent = 'Login';
-            }else if ( idElemento == 'cursos' && idioma == 'en'){
-                document.getElementById(idElemento).textContent = 'Courses';
-            } else{
-                document.getElementById(idElemento).textContent = textoTraducido;
-            }
-            
+            document.getElementById(idElemento).textContent = textoTraducido;
         })
         .catch(error => {
             console.error(`Error al traducir ${idElemento}:`, error);
@@ -57,6 +48,7 @@ function cambiarIdioma(idioma) {
             desloguear: "desloguear",
             registrarse: "registrarse",
             ayudaheader: "ayudaheader",
+            autocomplete: "autocomplete",
             tih4: "tih4",
             noencontrado: "no-encontrado-mensaje",
             somos: "somos",
@@ -77,14 +69,13 @@ function cambiarIdioma(idioma) {
             escribenos: "escribenos",
             registrate: "registrate",
             descubre2: "descubre2",
-            puntode: "puntode",
             fo1: "fo1",
             fo2: "fo2",
             fo3: "fo3",
             fo4: "fo4",
             fo5: "fo5",
-            fo6: "fo6",
-            fo7: "fo7",
+            fo5: "fo6",
+            fo5: "fo7",
             sobre: "sobre",
             n1: "n1",
             n2: "n2",
@@ -149,16 +140,15 @@ function cambiarIdioma(idioma) {
             esperar5: "esperar5",
             esp5: "esp5",
             esperar6: "esperar6",
-            esp6: "esp6",
-            autocomplete: "autocomplete"
-            
+            esp6: "esp6"
+
 
         };
         for (const id in elementosTraducibles) {
             if (elementosTraducibles.hasOwnProperty(id)) {
                 const elementoHtml = document.getElementById(elementosTraducibles[id]);
 
-                if (id === "buscar" || id === "autocomplete") {
+                if (id === "buscar") {
                     traducirPlaceholder(elementosTraducibles[id], idioma);
                 } else if (elementoHtml) {
                     traducirElemento(elementosTraducibles[id], idioma);
@@ -177,7 +167,7 @@ function traducirSegunIdioma(idiomaSeleccionado) {
         if (elementosTraducibles.hasOwnProperty(id)) {
             const elementoHtml = document.getElementById(elementosTraducibles[id]);
 
-            if (id === "search-input" || id === "autocomplete") {
+            if (id === "buscar") {
                 traducirPlaceholder(elementosTraducibles[id], idiomaSeleccionado);
             } else if (elementoHtml) {
                 traducirElemento(elementosTraducibles[id], idiomaSeleccionado);
@@ -195,73 +185,3 @@ document.addEventListener('DOMContentLoaded', function() {
         traducirSegunIdioma(idiomaGuardado);
     }
 });
-
-
-
-
-
-
-
-
-$("#search-icon").click(function() {
-    $(".nav").toggleClass("search");
-    $(".nav").toggleClass("no-search");
-    $(".search-input").toggleClass("search-active");
-});
-
-$('.menu-toggle').click(function(){
-    $(".nav").toggleClass("mobile-nav");
-    $(this).toggleClass("is-active");
-});
-
-
-
-// para lo de ayuda
-const items = document.querySelectorAll(".accordion button");
-
-function toggleAccordion() {
-    const itemToggle = this.getAttribute('aria-expanded');
-
-    for (i = 0; i < items.length; i++) {
-        items[i].setAttribute('aria-expanded', 'false');
-    }
-
-    if (itemToggle == 'false') {
-        this.setAttribute('aria-expanded', 'true');
-    }
-}
-
-items.forEach(item => item.addEventListener('click', toggleAccordion));
-
-
-
-
-
-
-// para poner un 'a' a mi img
-var miImagen = document.getElementById('imgusuario');
-// Agregamos un evento de clic a la imagen
-miImagen.addEventListener('click', function() {
-    // Redirigimos la página a "google.com" al hacer clic en la imagen
-    window.location.href = 'http://167.172.137.234/moodleacatdemi/user/profile.php';
-});
-
-// pa abrir y recargar la pag actual
-function abrirVentanaYRecargar() {
-    // Abrir una nueva ventana pa salir
-    var nuevaVentana = window.open("http://167.172.137.234/moodleacatdemi/login/logout.php?sesskey=Sdawna34sC", "_blank");
-
-    // Recargar la página actual
-    window.location.reload();
-}
-
-
-
-
-
-
-
-
-
-
-
