@@ -1,11 +1,13 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 defined('MOODLE_INTERNAL') || die;
-
+//include_once('edit_form_2.php');
 require_once($CFG->libdir.'/formslib.php');
 require_once($CFG->libdir.'/completionlib.php');
 require_once($CFG->libdir . '/pdflib.php');
-
+require_once('../config.php');
 /**
  * The form for handling editing a course.
  */
@@ -191,12 +193,22 @@ class course_edit_form extends moodleform {
         $mform->addHelpButton('summary_editor', 'coursesummary');
         $mform->setType('summary_editor', PARAM_RAW);
         $summaryfields = 'summary_editor';
-
+//// ARCHIVO DE IMAGEN
         if ($overviewfilesoptions = course_overviewfiles_options($course)) {
             $mform->addElement('filemanager', 'overviewfiles_filemanager', get_string('courseoverviewfiles'), null, $overviewfilesoptions);
             $mform->addHelpButton('overviewfiles_filemanager', 'courseoverviewfiles');
             $summaryfields .= ',overviewfiles_filemanager';
-        }
+        } //--> se guarda de una en mdl_files
+
+        ///mdl_pruebas_img 
+
+        /// id_file -> cotexid(mdl_files)
+        /// id_courses -> id de courses
+        //// name_archiv -> filename (mdl_files)
+
+        /////
+//////////////////////
+
 
         if (!empty($course->id) and !has_capability('moodle/course:changesummary', $coursecontext)) {
             // Remove the description header it does not contain anything any more.
@@ -204,6 +216,25 @@ class course_edit_form extends moodleform {
             $mform->hardFreeze($summaryfields);
         }
 
+        // si y no
+
+        // Pregunta de visibilidad.                                 
+        // Pregunta de visibilidad.
+        $mform->addElement('header', 'visibilityhdr', get_string('visibility', 'core_question'));
+        $mform->addElement('select', 'visibility', get_string('visibilityquestion', 'core_question'), array(
+            0 => get_string('no'),
+            1 => get_string('yes')
+        ));
+        $mform->setDefault('visibility', 0);
+        $mform->setType('visibility', PARAM_INT);
+
+        // Agregar un campo oculto para almacenar el ID del curso.
+        //$mform->addElement('hidden', 'courseid', $next_course_id);
+        //$mform->setType('courseid', PARAM_INT);
+
+
+        /////////////////////////////
+        
         // Files and uploads.
         $mform->addElement('header', 'filehdr', get_string('filesanduploads'));
 
@@ -333,6 +364,23 @@ class course_edit_form extends moodleform {
     function validation($data, $files) {
         global $DB;
 
+        // Asegúrate de que 'visibility' está presente en los datos.
+        // Asegúrate de que 'visibility' está presente en los datos.
+        if (isset($data['visibility'])) {
+            // Obtener el valor de 'visibility'.
+            $visibilityvalue = $data['visibility'];
+
+            // Crear un array asociativo con los campos y sus valores.
+            $insertdata = array(
+                'visiblenewp' => $visibilityvalue,
+                // Agrega otros campos si es necesario
+            );
+
+            // Insertar en la base de datos utilizando insert_record_raw().
+            $DB->insert_record_raw('course', $insertdata);
+        }
+
+//////////
         $errors = parent::validation($data, $files);
 
         // Add field validation check for duplicate shortname.
