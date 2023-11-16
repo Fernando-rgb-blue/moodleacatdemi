@@ -1,0 +1,848 @@
+/* Pa las secciones */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', 'Arial', sans-serif;
+}
+
+
+h1{
+    color: #ffffff;
+    text-align: center;
+    line-height: 1.4;
+}
+
+h3, p {
+    color: #000000;
+    text-align: center;
+    line-height: 1.4;
+}
+
+h2 {
+    color: #000;
+    font-size: 1.3rem;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+
+/* BASIC SETUP */
+
+.page-wrapper {
+    width: 100%;
+    height: 20%;
+}
+
+.nav-wrapper {
+    width: 100%;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 99;
+}
+
+.grad-bar {
+    width: 100%;
+    position: fixed;
+    height: 5px;
+    background: linear-gradient(-45deg, #02e7e1, #017ca5, #01c4db, #00a6d5);
+    /* position: absolute;
+    z-index: 100; */
+    background-size: 400% 400%;
+        -webkit-animation: gradbar 15s ease infinite;
+        -moz-animation: gradbar 15s ease infinite;
+        animation: gradbar 15s ease infinite;
+    z-index: 100;
+}
+/* NAVIGATION */
+
+.navbar {
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+    position: fixed;
+
+    align-items: center;
+    height: 66px;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+}
+
+.navbar img {
+    height: 38px;
+    justify-self: start;
+    margin-left: 20px;
+}
+
+img#lupaImagen {
+    height: 20px;
+    margin-right: 5px;
+    justify-self: start;
+    margin-left: 11px;
+}
+
+img#imgusuario {
+    height: 23px;
+    margin-right: 5px;
+    justify-self: start;
+    margin-left: 11px;
+    cursor: pointer;
+}
+
+img#logoHome {
+    cursor: pointer;
+}
+
+
+.navbar ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    justify-self: end;
+}
+
+.nav-item {
+    display: flex; /* Habilita Flexbox en los elementos con la clase "nav-item" */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+}
+
+.fas.fa-search {
+    display: flex; /* Habilita Flexbox en los elementos con la clase "nav-item" */
+    align-items: center; /* Centra verticalmente el contenido */
+    justify-content: center; /* Centra horizontalmente el contenido */
+}
+
+.nav-item a {
+    color: #333333;
+    font-size: 0.91rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease-out;
+    padding: 0px 10px;
+}
+
+
+li .nav-item{
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-item a:hover {
+    color: #00c4db;
+}
+
+.nav-item.iniciar a{
+    padding: 7px 10px;
+    background: #00c4db;
+    border: 1px #4f8e96 solid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.nav-item.iniciar a:hover{
+    color: white;
+}
+.nav-item.crear a{
+    padding: 7px 10px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Solucionar el problema de la lista desplegable */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 101;
+    left: 0;
+    top: 100%; /* Ajustar la posición superior */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilos para los elementos de la lista */
+.dropdown-option {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+}
+
+#suggestions {
+    display: none;
+    position: absolute;
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    top: 100%; /* Coloca la lista debajo de la barra de búsqueda */
+}
+input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+    width: 200px;
+}
+
+li.dropdown-option:hover{
+    color: #00c4db;
+}
+
+/* MOBILE MENU & ANIMATION */
+
+.menu-toggle .bar{
+    width: 25px;
+    height: 3px;
+    background-color: #3f3f3f;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle {
+    justify-self: end;
+    margin-right: 25px;
+    display: none;
+}
+
+.menu-toggle:hover{
+    cursor: pointer;
+}
+
+#mobile-menu.is-active .bar:nth-child(2){
+    opacity: 0;
+}
+
+#mobile-menu.is-active .bar:nth-child(1){
+    -webkit-transform: translateY(8px) rotate(45deg);
+    -ms-transform: translateY(8px) rotate(45deg);
+    -o-transform: translateY(8px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
+}
+
+#mobile-menu.is-active .bar:nth-child(3){
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    -ms-transform: translateY(-8px) rotate(-45deg);
+    -o-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
+}
+.dropdown-option:hover{
+    color: #00c4db;
+}
+
+/* INICIO CONTENIDO DEL MAIN */
+.relleno{
+    width: 100%;
+    height: 66px;
+    background-color: #fff;
+}
+
+        /* Descubre un mundo de conocimiento tecnológico en línea */
+        .headline {
+            width: 100%;
+            height: 67vh;
+            min-height: 350px;
+            background: linear-gradient(rgba(45, 45, 45, 0.3),rgba(0,0,0,0.7)), url('../imagenes/home.png');
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .tamdeH1{ /*esto es para lo del primer texto q aparece*/
+            width: 470px;
+        }
+        h1 {
+            font-family: 'Lato', 'Arial', sans-serif;
+            /* supuestamente pa la animacion */
+            animation: slide-up 0.5s ease-out forwards; /* Agrega "forwards" para mantener el estado final de la animación */
+            opacity: 0;
+            transform: translateY(50px);
+            z-index: -2;
+            /* Fin de lo necesario pa la animacion */
+        
+            margin-left: 90px;
+            font-weight: normal;
+            text-align: center;
+            font-size: 2.5rem;
+            text-shadow: 2px 1px 3px #90918f;
+        }
+        
+
+/* Somos una empresa dedicada a facilitar educación de calidad en línea en las áreas de
+tecnología de la información y comunicación. */
+.feature-container.des {
+    flex-basis: 43%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.feature-container.des p {
+    font-size: 20px;
+}
+.celeste {
+    color: #00a6d5;
+    font-size: 16px;
+}
+
+
+/* Explora el futuro de la tecnología e informática con nosotros */
+.colorblanco{
+    padding: 40px 110px;
+    background: #ffffff;
+}
+.features {
+    width: 100%;
+    height: auto;
+    background-color: #DEF7F5; /*celeste claro*/
+    display: flex;
+    padding: 20px 60px;
+    justify-content: space-around;
+}
+.feature-container {
+    flex-basis: 43%;
+    margin-top: 10px;
+}
+.feature-container p {
+    color: #3f3f3f;
+    text-align: center;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+.feature-container img {
+    width: 100%;
+    margin-bottom: 15px;
+}
+.cuatropor {
+    flex-basis: 50%;
+}
+.cuatropor.ini {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 40%;
+}
+.center-content {
+    text-align: center; /* Para centrar horizontalmente el contenido en la misma columna */
+}
+.explora{
+    color: #212428;
+    text-align: center;
+    line-height: 1.4;
+}
+.explora.ti{
+    font-size: 2.8rem;
+    font-weight: normal;
+    justify-content: center;
+    align-items: center;
+}
+.trespor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 30%;
+}
+
+/* Descubre Nuestros Cursos */
+.dos{
+    background: #ffffff;
+}
+.curceleste{
+    background: #DEF7F5; /*celeste claro*/
+    text-align: center;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    margin: 10px 20px; /* 3 cursos */
+    
+}
+.curceleste p{
+    /* font-family: play; */
+    text-align: left;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+.curceleste img{
+    width: 90%;
+}
+h2.clases{
+    font-family: 'play', 'Arial', sans-serif;
+    letter-spacing: 2px;
+    font-size: 40px;
+    font-weight: 100;
+}
+/* tamaño de titulos de los cursos */
+.tamcurso{
+    font-size: 22px;
+    font-weight: bold;
+}
+.celeste.curso {
+    color: #ffffff;
+    background-color: #00a6d5;
+    height: 80px;
+    text-decoration: none;
+
+    padding: 8px 60px;
+    margin-bottom: 50px;
+    font-size: 17px;
+}
+.celeste.curso:hover {
+    background-color: #BEC0BF;
+}
+
+
+img.imagcurso{
+    width: 100%;
+}
+
+.vercursos{
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    background-color: black;
+    margin-top: 25px;
+    margin-bottom: 30px;
+    /* color: white; */
+    padding: 15px 20px;
+}
+.vercursos:hover{
+    background-color: #BEC0BF;
+    color: #000;
+}
+
+/* ¿QUÉ ESPERAS DE UN CUSO DE ACATDEMY? */
+.esperas {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 140px;
+}
+
+.columna1,
+.columna2 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 50px;
+}
+
+.cont {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.cont img {
+    margin-right: 10px;
+}
+.cont p {
+    text-align: left;
+}
+/* Descubre por dónde comenzar */
+
+.features.descubre {
+    width: 100%;
+    height: 320px;
+    background: linear-gradient(rgba(45, 45, 45, 0.3),rgba(0,0,0,0.7)), url('../imagenes/descubre.png');
+    display: flex;
+    padding: 15px 60px;
+    justify-content: space-around;
+    color: #ffffff;
+}
+
+.sesentapor {
+    flex-basis: 60%;
+}
+.sesentapor.ini {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 60%;
+}
+
+a.celeste.test{
+    background: #fff;  
+    color: #000;
+    padding: 8px;
+    border-radius: 7px;
+    text-decoration: none;
+    margin-top: 2px;
+}
+a.celeste.test:hover{
+    background: #01c4db;
+    color: #ffffff;
+}
+.explora.blanco{
+    color: #ffffff;
+}
+/* FIN CONTENIDO DEL MAIN */
+
+
+/* INICIO footer */
+.footer{
+    background:#13213d;
+    padding:30px 0px;
+    font-family: 'Play', sans-serif;
+    text-align: left;
+}
+    
+.footer .row{
+    width:100%;
+    margin:1% 0%;
+    padding:0.3% 0%;
+    color: white;
+    font-size:1em;
+}
+
+.footer .row a{
+    text-decoration:none;
+    color: white;
+    transition:0.5s;
+}
+.row.reser{
+    color: #02ab9f;
+}
+.footer .row a:hover{
+    color:#02ab9f;
+}
+
+.footer .row ul{
+    width:100%;
+}
+
+.footer .row ul li{
+    display:inline-block;
+    margin:0px 20px;
+    padding: 0px 0px;
+}
+
+.footer .row a i{
+    font-size:2em;
+    margin:0% 1%;
+}
+div .row.iconos{
+    padding-left: 10px;
+}
+
+/* FIN DE FOOTER */
+
+
+
+
+
+
+
+
+/* animacion del h1 */
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* fin de animacion del h1 */
+
+
+
+
+
+/* KEYFRAME ANIMATIONS */
+
+@-webkit-keyframes gradbar {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes gradbar {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes gradbar {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 1170px) {
+    .feature-container.cuatropor.ini h3 {
+        font-size: 1.5rem;
+    }
+}
+/* Explora el futuro de la tecnología e informática con nosotros */
+
+
+
+/* Mobile Devices - Phones/Tablets */
+
+@media only screen and (max-width: 900px) { 
+
+    .features {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    /* MOBILE HEADINGS */
+    h1 {
+        margin-left: 0px;
+        font-size: 1.9rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+    p {
+        font-size: 0.8rem;
+    }
+
+    /* MOBILE NAVIGATION */
+        
+    .navbar ul {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        justify-content: start;
+        top: 55px;
+        background-color: #fff;
+        width: 100%;
+        height: calc(100vh - 55px);
+        transform: translate(-101%);
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .navbar li {
+        padding: 15px;
+    }
+
+    .navbar li:first-child {
+        margin-top: 50px;
+    }
+
+    .navbar li a {
+        font-size: 1rem;
+    }
+        
+    .menu-toggle, .bar {
+        display: block;
+        cursor: pointer;
+    }
+
+    .mobile-nav {
+        transform: translate(0%)!important;
+    }
+    
+    /* SECTIONS */
+
+    .headline {
+        height: 20vh;
+    }
+        
+    .feature-container p {
+        margin-bottom: 10px;
+    }
+
+    .feature-container {
+        margin-top: 30px;
+    }
+
+    .feature-container:nth-child(2) {
+        order: -1;
+    }
+
+    .feature-container.tam img{
+        height: 100%;
+    }
+
+    #suggestions {
+        width: calc(100% - 55px); /* Resta el espacio del ícono y el margen */
+        /* top: 100%; */
+        top: 50%;
+        left: 50%;
+        transform: translate(-1%, -11%);
+        /* margin-left: 35%; */
+        max-width: none; /* Restablece el ancho máximo */
+        max-height: 50vh; /* Limita la altura en dispositivos móviles */
+        overflow-y: auto; /* Agregar desplazamiento vertical si es necesario */
+    }
+
+    
+    #suggestions .dropdown-option {
+        padding: 10px 20px; /* Espaciado adecuado para dispositivos móviles */
+    }
+
+    /* main */
+    .tamdeH1{ /*esto es para lo del primer texto q aparece*/
+        width: auto;
+    }
+    .headline{
+        height: 10vh;
+    }
+    /* somos */
+    .feature-container.des p {
+        font-size: 0.9rem;
+    }
+    /* Explora el futuro de la tecnología e informática con nosotros */
+    .feature-container.cuatropor.ini h3 {
+        font-size: 1.6rem;
+    }
+    /*CURSOS */
+    h2.clases{
+        font-size: 1.4rem;
+        font-weight: bolder;
+    }
+    .colorblanco{
+        padding: 20px 20px;
+        background: #ffffff;
+    }
+
+    .esperas {
+        flex-direction: column; /* Cambiar a una columna */
+        padding: 0px 0px;
+    }
+    .columna1,
+    .columna2 {
+        padding: 0px 10px;
+    }
+    /* nosotros */
+    .features.dos{
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+    .cuatropor {
+        margin-top: 50px;
+    }
+
+    /* ¿QUÉ ESPERAS DE UN CUSO DE ACATDEMY? */
+    .columna1,
+    .columna2 {
+        width: 100%; /* Ocupar todo el ancho */
+    }
+    /* Descubre por dónde comenzar */
+    h3#trad.explora.ti.blanco {
+        font-size: 2.0rem;
+    }
+    
+    section.features.descubre{
+        height: 30%;
+        display: flex;
+        justify-content: center; /* Centrar horizontalmente */
+        align-items: center; /* Centrar verticalmente */
+        padding-bottom: 30px;
+    }
+}
+
+
+.tabs {
+	display: flex;
+	flex-wrap: wrap;
+}
+.tab p {
+	text-align: justify;
+}
+.tabs label {
+	order: 1;
+	display: block;
+	padding: 1rem 2rem;
+	margin-right: 0.2rem;
+	cursor: pointer;
+    background: #e4e4e4;
+    font-weight: bold;
+    transition: background ease 0.2s;
+}
+.tabs .tab {
+    order: 99; 
+    flex-grow: 1;
+    width: 100%;
+    display: none;
+    padding: 1rem;
+    background: #fff;
+}
+.tabs input[type="radio"] {
+	display: none;
+}
+.tabs input[type="radio"]:checked + label {
+	background: #00c4db;
+}
+.tabs input[type="radio"]:checked + label + .tab {
+	display: block;
+}
+
+
+.op1:hover{
+    background: #BEC0BF;
+    /* color: #00c4db; */
+}
+
+@media (max-width: 70em) {
+    .tabs .tab,
+    .tabs label {
+        order: initial;
+    }
+    .tabs label {
+        width: 100%;
+        margin-right: 0;
+        margin-top: 0.2rem;
+    }
+}
+
+
+/* footer */
+@media (max-width:720px){
+    .footer{
+        text-align:left;
+        padding:5%;
+    }
+    .footer .row ul li{
+        display:block;
+        margin:10px 0px;
+        text-align:left;
+    }
+    .footer .row a i{
+        margin:0% 3%;
+    }
+    div .row.iconos{
+        margin-left: 0px;
+    }
+}
