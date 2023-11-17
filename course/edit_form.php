@@ -363,7 +363,7 @@ class course_edit_form extends moodleform {
      */
     function validation($data, $files) {
         global $DB;
-        ////prubeas asdasda
+        ////prubeas asdasdafsf
         // Asegúrate de que 'visibility' está presente en los datos.
         // Asegúrate de que 'visibility' está presente en los datos.
         if (isset($data['visibility'])) {
