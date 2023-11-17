@@ -39,7 +39,7 @@ if (!empty($CFG->defaulthomepage) &&
         optional_param('redirect', 1, PARAM_BOOL) === 0
 ) {
     $urlparams['redirect'] = 0;
-}/////prube2
+}
 $PAGE->set_url('/', $urlparams);
 $PAGE->set_pagelayout('frontpage');
 $PAGE->add_body_class('limitedwidth');
