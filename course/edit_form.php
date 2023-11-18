@@ -40,7 +40,7 @@ class course_edit_form extends moodleform {
             $coursecontext = null;
             $context = $categorycontext;
         }
-///////
+/////////////
         $courseconfig = get_config('moodlecourse');
 
         $this->course  = $course;
