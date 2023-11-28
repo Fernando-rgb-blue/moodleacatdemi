@@ -27,6 +27,205 @@
 require('../config.php');
 require_once('lib.php');
 
+// mi php
+require_once('../config.php');
+global $CFG, $OUTPUT, $PAGE, $DB, $USER;
+$redirect = $CFG->wwwroot.'index.php';
+$campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
+
+$resultados = $DB->get_records_sql("SELECT DISTINCT titulo FROM {cursosp}"); 
+
+// Crear un array asociativo en PHP
+$ocursos = [];
+$posi = 0;
+foreach ($resultados as $resultado) {
+    $ocursos[$posi] = $resultado->titulo;
+    $posi++;
+}
+
+?> 
+
+
+<!DOCTYPE html>
+<html lang="es" class="my-page">
+<body>
+    <head>
+        <title>Login|Ingresar</title>
+    </head>
+    <header class="page-wrapper">
+            <div class="nav-wrapper">
+                <div class="grad-bar"></div>
+                    <nav class="navbar">
+                        <a><img src="../pruebaphp/que/cambiado.svg" id="logoHome2" alt="Company Logo" class="lo"></a>
+                        <div class="menu-toggle" id="mobile-menu">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                        <ul class="nav no-search">
+                            <li class="nav-item" id="ocultar">
+                                <img src="../pruebaphp/que/lupa.svg" height="20px" alt="" id="lupaImagen">
+                                <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
+                                <ul id="suggestions" class="dropdown-content"></ul>
+                            </li>
+                            <li class="nav-item"><a href="../index.php" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="../pruebaphp/help.php" id="ayuda">Ayuda</a></li>
+                            <li class="nav-item">
+                                <div class="dropdown" id="idiomaDropdown">
+                                    <a><span id="idioma">Idioma</span></a>
+                                    <div class="dropdown-content">
+                                        <div id="ingles" class="dropdown-option" onclick="cambiarIdioma('en')">Inglés</div>
+                                        <div id="espanol" class="dropdown-option" onclick="cambiarIdioma('es')">Español</div>
+                                        <!-- <div id="frances" class="dropdown-option" onclick="cambiarIdioma('fr')">Francés</div> -->
+                                        <div id="portugues" class="dropdown-option" onclick="cambiarIdioma('pt')">Portugués</div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            <?php
+                                if (!empty($USER->firstname) && !empty($USER->lastname) && strtoupper(substr($USER->firstname, 0, 1)) !='&' && strtoupper($USER->firstname) !='INVITADO') {
+                                    echo '<li class="nav-item iniciar">';
+                                    echo '<a id="desloguear" href="" target="_blank" onclick="abrirVentanaYRecargar()">Salir sesión</a>';
+                                    echo '</li>';
+                                    echo '<li class="nav-item crear">';
+                                    echo '<img src="que/usuario.svg" height="20px" alt="" id="imgusuario">';
+                                    echo '<a href="http://167.172.137.234/moodleacatdemi/user/profile.php">';
+                                    echo '<span>' . strtoupper(substr($USER->firstname, 0, 1)) . strtoupper(substr($USER->lastname, 0, 1)) . '</span>';
+                                    echo '</a>';
+                                    echo '</li>';
+                                } else {
+                                    echo '<li class="nav-item iniciar prim"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/Inter_Inic_Sess/index.html">Ingresar</a></li>';
+                                    echo '<li class="nav-item crear prim"><a id="registrarse" href="#">Registrarse</a></li>';
+                                }
+                            ?>
+                        </ul> 
+                    </nav>
+                </div>
+    </header>
+    
+    
+                                
+
+    <script> 
+            // para poner un 'a' a mi img del logohome2
+            var miImagenhome2 = document.getElementById('logoHome2');
+
+            // Agregamos un evento de clic a la imagen
+            miImagenhome2.addEventListener('click', function() {
+                window.location.href = '../pruebaphp/index.php';
+            });            
+            
+            // inicio de busqueda
+            // Array de opciones de sugerencias ocursos
+            // const opciones = ["programacion en python", "redes y topologias", "switch"];
+            const opciones = <?php echo json_encode($ocursos); ?>;
+            const lupaImagen = document.getElementById("lupaImagen");
+
+            // Maneja el clic en la imagen de la lupa
+            lupaImagen.addEventListener("click", function () {
+                const searchInput = document.getElementById("search-input");
+
+                // Activa el input de búsqueda y enfócalo
+                searchInput.classList.add("search-active");
+                searchInput.focus();
+            });
+            // Función para mostrar sugerencias
+            function mostrarSugerencias(inputValue) {
+                const suggestions = opciones.filter((opcion) =>
+                    opcion.toLowerCase().includes(inputValue.toLowerCase())
+                );
+
+                const suggestionsList = document.getElementById("suggestions");
+
+                // Limpia la lista de sugerencias previas
+                suggestionsList.innerHTML = "";
+
+                // Calcula la posición y el ancho de la barra de búsqueda
+                const searchInput = document.getElementById("search-input");
+                const inputRect = searchInput.getBoundingClientRect();
+                const inputWidth = inputRect.width;
+                const inputTop = inputRect.bottom;
+
+                // Actualiza la posición de la lista de sugerencias
+                suggestionsList.style.width = inputWidth + "px";
+                suggestionsList.style.top = inputTop + "px";
+                suggestionsList.style.left = inputRect.left + "px";
+
+                // Muestra u oculta la lista de sugerencias según si hay coincidencias
+                if (inputValue.length > 0 && suggestions.length > 0) {
+                    // Agrega las sugerencias coincidentes a la lista
+                    suggestions.forEach((suggestion) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = suggestion;
+                    listItem.classList.add("dropdown-option");
+                    suggestionsList.appendChild(listItem);
+                    });
+
+                    suggestionsList.style.display = "block";
+                } else if(inputValue.length === 0) {
+                        suggestionsList.style.display = "none"; // Oculta la lista si está vacío
+                }else {
+                    // Si no hay coincidencias, muestra el mensaje "Curso no encontrado"
+                    const listItem = document.createElement("li");
+                    listItem.textContent = "❌ No encontrado";
+                    listItem.classList.add("dropdown-option");
+                    suggestionsList.appendChild(listItem);
+                    suggestionsList.style.display = "block";
+                }
+            }
+
+            // Función para manejar el redireccionamiento
+            function redirigirURL(url) {
+                window.location.href = url;
+            }
+
+            // Maneja el clic en una sugerencia para llenar la barra de búsqueda
+            document.getElementById("suggestions").addEventListener("click", function (event) {
+                const clickedSuggestion = event.target.textContent;
+                this.style.display = "none";
+
+                switch (clickedSuggestion) {
+                    case "Curso no encontrado":
+                        // Aquí puedes manejar el comportamiento personalizado para "Curso no encontrado"
+                        // Por ejemplo, mostrar un mensaje de error o realizar otra acción.
+                        break;
+                    default:
+                        // Busca la opción seleccionada en el arreglo 'opciones'
+                        const selectedIndex = opciones.findIndex(option => option === clickedSuggestion);
+
+                        if (selectedIndex !== -1 && opciones[selectedIndex]) {
+                            // Si la opción está en el arreglo y hay una URL correspondiente en linkdirec, redirige a esa URL
+                            redirigirURL(opciones[selectedIndex]);
+                        } else {
+                            // Si la opción no se encuentra en el arreglo o no hay una URL correspondiente, redirige a home.html por defecto
+                            redirigirURL("home.html");
+                        }
+                        break;
+                }
+            });
+
+            // Maneja el evento de cambio en el input de búsqueda
+            document.getElementById("search-input").addEventListener("input", function () {
+                const inputValue = this.value;
+                mostrarSugerencias(inputValue);
+            });
+
+            // Cerrar la lista de sugerencias si se hace clic en cualquier lugar fuera de ella
+            document.addEventListener("click", function (event) {
+                if (!event.target.closest(".search-input")) {
+                    document.getElementById("suggestions").style.display = "none";
+                }
+            });
+            // fin de busqueda
+        </script>                      
+    </body>
+</html>   
+
+
+
+
+
+<?php
 redirect_if_major_upgrade_required();
 
 $testsession = optional_param('testsession', 0, PARAM_INT); // test session works properly
@@ -361,6 +560,9 @@ if (!empty($SESSION->loginerrormsg)) {
     redirect(new moodle_url('/login/index.php'));
 }
 
+
+
+
 $PAGE->set_title("$site->fullname: $loginsite");
 $PAGE->set_heading("$site->fullname");
 
@@ -380,3 +582,7 @@ if (isloggedin() and !isguestuser()) {
 }
 
 echo $OUTPUT->footer();
+
+
+include('../pruebaphp/header.php');
+?>

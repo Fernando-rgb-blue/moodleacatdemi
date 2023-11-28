@@ -140,3 +140,42 @@ if ($editing && has_capability('moodle/course:create', context_system::instance(
     echo $courserenderer->add_new_course_button();
 }
 echo $OUTPUT->footer();
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilos para superponer el enlace sobre el div */
+        
+    </style>
+</head>
+<body>
+        <script>
+            // Obtén el elemento por su clase
+            var miEnlace = document.querySelector('.navbar-brand.d-none.d-md-flex.align-items-center.m-0.mr-4.p-0.aabtn');
+
+            // Verifica si se encontró el elemento
+            if (miEnlace) {
+                // Cambia el atributo href
+                miEnlace.href = 'pruebaphp/index.php';
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Coloca aquí el código para asegurarte de que se ejecute después de la carga completa del DOM
+                var enlacePrincipal = document.querySelector('.nav-link.active');
+                if (enlacePrincipal) {
+                    enlacePrincipal.textContent = 'Cursos';
+                }
+            });
+        </script>
+</body>
+</html>
+
+
+
+
+

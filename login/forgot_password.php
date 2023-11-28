@@ -39,8 +39,63 @@ require_once(__DIR__ . '/lib.php');
 require_once('forgot_password_form.php');
 require_once('set_password_form.php');
 
-$token = optional_param('token', false, PARAM_ALPHANUM);
 
+$token = optional_param('token', false, PARAM_ALPHANUM);
+?> 
+
+
+<!DOCTYPE html>
+<html lang="es" class="my-page">
+<body>
+    <head>
+        <title>Login|Ingresar</title>
+    </head>
+    <header class="page-wrapper" style="display: none">
+            <div class="nav-wrapper">
+                <div class="grad-bar"></div>
+                    <nav class="navbar">
+                        <a><img src="../pruebaphp/que/cambiado.svg" id="logoHome" alt="Company Logo" class="lo"></a>
+                        <div class="menu-toggle" id="mobile-menu">
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                            <span class="bar"></span>
+                        </div>
+                        <ul class="nav no-search">
+                            <li class="nav-item" id="ocultar">
+                                <img src="../pruebaphp/que/lupa.svg" height="20px" alt="" id="lupaImagen">
+                                <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
+                                <ul id="suggestions" class="dropdown-content"></ul>
+                            </li>
+                            <li class="nav-item"><a href="#" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="help.php" id="ayuda">Ayuda</a></li>
+                            <li class="nav-item">
+                                <div class="dropdown" id="idiomaDropdown">
+                                    <a><span id="idioma">Idioma</span></a>
+                                    <div class="dropdown-content">
+                                        <div id="ingles" class="dropdown-option" onclick="cambiarIdioma('en')">Inglés</div>
+                                        <div id="espanol" class="dropdown-option" onclick="cambiarIdioma('es')">Español</div>
+                                        <!-- <div id="frances" class="dropdown-option" onclick="cambiarIdioma('fr')">Francés</div> -->
+                                        <div id="portugues" class="dropdown-option" onclick="cambiarIdioma('pt')">Portugués</div>
+
+                                    </div>
+                                </div>
+                            </li>
+                            
+                        </ul> 
+                    </nav>
+                </div>
+    </header>
+    
+    
+                                
+
+                        
+    </body>
+</html>   
+
+
+
+<?php
 $PAGE->set_url('/login/forgot_password.php');
 $systemcontext = context_system::instance();
 $PAGE->set_context($systemcontext);
@@ -73,11 +128,13 @@ if (!empty($SESSION->password_reset_token)) {
 if (empty($token)) {
     // This is a new password reset request.
     // Process the request; identify the user & send confirmation email.
+    include('../pruebaphp/onlystyles.php');
     core_login_process_password_reset_request();
 } else {
     // A token has been found, but not in the session, and not from a form post.
     // This must be the user following the original rest link, so store the reset token in the session and redirect to self.
     // The session var is intentionally used only during the lifespan of one request (the redirect) and is unset above.
+
     if (!$tokeninsession && $_SERVER['REQUEST_METHOD'] === 'GET') {
         $SESSION->password_reset_token = $token;
         redirect($CFG->wwwroot . '/login/forgot_password.php');
@@ -86,3 +143,4 @@ if (empty($token)) {
         core_login_process_password_set($token);
     }
 }
+include('../pruebaphp/onlystyles.php');

@@ -47,7 +47,7 @@
                                 <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
                                 <ul id="suggestions" class="dropdown-content"></ul>
                             </li>
-                            <li class="nav-item"><a href="#" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="../index.php" id="cursos">Cursos</a></li>
                             <li class="nav-item"><a href="help.php" id="ayuda">Ayuda</a></li>
                             <li class="nav-item">
                                 <div class="dropdown" id="idiomaDropdown">
@@ -65,7 +65,7 @@
                             <!-- <li class="nav-item iniciar"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/INICIO_SESION/index.html">Ingresar</a></li>
                             <li class="nav-item crear"><a id="registrarse" href="#">Registrarse</a></li> -->
                             <?php
-                                if (!empty($USER->firstname) && !empty($USER->lastname) && strtoupper(substr($USER->firstname, 0, 1)) !='&' ) {
+                                if (!empty($USER->firstname) && !empty($USER->lastname) && strtoupper(substr($USER->firstname, 0, 1)) !='&' && strtoupper($USER->firstname) !='INVITADO') {
                                     echo '<li class="nav-item iniciar">';
                                     echo '<a id="desloguear" href="" target="_blank" onclick="abrirVentanaYRecargar()">Salir sesión</a>';
                                     echo '</li>';
@@ -183,7 +183,7 @@
                             </ul>
                         </div>
                         <p class="explora" id="escribenos">o escríbenos a:</p>
-                        <a href="mailto:acatdemy@demy.com" class="celeste" id="registrate">acatdemy@demy.com</a>
+                        <a href="mailto:acatdemy@demy.com" target="_blank class="celeste" id="registrate">acatdemy@demy.com</a>
                     </div>
                 </div>
                 <div class="feature-container trespor ini">
@@ -241,7 +241,7 @@
                     <img src="que/q4.svg" alt="" height="40px">
                     <div>
                         <p><b id="esperar4">Son evaluativos</b></p>
-                        <p id="esp4">Los cursos incluyen evaluaciones y retroalimentación regular para medir el progreso y garantizar un aprendizaje efectivo</p>
+                        <p id="esp4">Los cursos incluyen evaluaciones y retroalimentación regular para medir el progreso y garantizar un aprendizaje efectivo.</p>
                     </div>
                 </div>
                 <div class="cont">
@@ -270,12 +270,13 @@
                 <ul>
                     <li id="fo1">© 2023 Acatdemy Todos los derechos reservadoss</li>
                 <ul>
+                
             </div>
             
             <div class="row">
                 <ul>
                     <li><a href="index.php#nosotros" id="fo2">Sobre nosotros</a></li>
-                    <li><a href="#" id="fo3">Cursos</a></li>
+                    <li><a href="../index.php" id="fo3">Cursos</a></li>
                     <li><a href="TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
                     <li><a href="cookies.php" id="fo5">Políticas sobre cookies</a></li>
                     <li><a href="#" id="fo6">Contáctanos</a></li>
@@ -284,6 +285,7 @@
             </div>
             
             <div class="row iconos">
+                <ul>
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
                 <a href="#"><i class="fa fa-youtube"></i></a>
@@ -291,7 +293,7 @@
                 </ul>
             </div>
         </div>
-    </footer>                    
+    </footer>                   
         <script>
 
             // inicio de busqueda
@@ -397,14 +399,14 @@
             });
             // fin de busqueda
 
-            // para poner un 'a' a mi img del logo
-            var miImagen2 = document.getElementById('logoHome');
+            // // para poner un 'a' a mi img del logo
+            // var miImagen2 = document.getElementById('logoHome');
 
-            // Agregamos un evento de clic a la imagen
-            miImagen2.addEventListener('click', function() {
-                // Redirigimos la página a "google.com" al hacer clic en la imagen
-                window.location.href = 'index.php';
-            });
+            // // Agregamos un evento de clic a la imagen
+            // miImagen2.addEventListener('click', function() {
+            //     // Redirigimos la página a "google.com" al hacer clic en la imagen
+            //     window.location.href = 'index.php';
+            // });
 
             
             // inicio de busqueda de ayuda
@@ -444,8 +446,14 @@
 
             // Cargar el acordeón al inicio de la página
             filtrarAcordeon("");
-            // Fin de busqueda de ayuda
+            
+            // para poner un 'a' a mi img del logo
+            var miImagen2 = document.getElementById('logoHome');
 
+            // Agregamos un evento de clic a la imagen
+            miImagen2.addEventListener('click', function() {
+                window.location.href = 'index.php';
+            });
         
         </script>
 </body>

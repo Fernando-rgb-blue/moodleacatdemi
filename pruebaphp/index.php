@@ -48,7 +48,7 @@
                                 <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
                                 <ul id="suggestions" class="dropdown-content"></ul>
                             </li>
-                            <li class="nav-item"><a href="#" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="../index.php" id="cursos">Cursos</a></li>
                             <li class="nav-item"><a href="help.php" id="ayuda">Ayuda</a></li>
                             <li class="nav-item">
                                 <div class="dropdown" id="idiomaDropdown">
@@ -66,7 +66,7 @@
                             <!-- <li class="nav-item iniciar"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/INICIO_SESION/index.html">Ingresar</a></li>
                             <li class="nav-item crear"><a id="registrarse" href="#">Registrarse</a></li> -->
                             <?php
-                                if (!empty($USER->firstname) && !empty($USER->lastname) && strtoupper(substr($USER->firstname, 0, 1)) !='&' ) {
+                                if (!empty($USER->firstname) && !empty($USER->lastname) && strtoupper(substr($USER->firstname, 0, 1)) !='&' && strtoupper($USER->firstname) !='INVITADO') {
                                     echo '<li class="nav-item iniciar">';
                                     echo '<a id="desloguear" href="" target="_blank" onclick="abrirVentanaYRecargar()">Salir sesión</a>';
                                     echo '</li>';
@@ -242,9 +242,11 @@
                         <input type="radio" name="tabs" id="tabone" checked="checked">
                         <label for="tabone" class="op1" id="n1">Nosotros</label>
                         <div class="tab">
-                            <p><span id="cont1n">Somos una empresa dedicada a facilitar educación de calidad en línea en las áreas de tecnología de la información y comunicación.
-                            </span> <span id="cont12n"> Ofrecemos cursos interactivos, herramientas de aprendizaje y asesoramiento personalizado para ayudar a nuestros estudiantes a prepararse para una profesión en el campo de la informática.</span>
-                            <span id="cont13n"> Contamos con diversos programas de estudios diseñados por expertos, además nuestra plataforma de aprendizaje en línea permite el acceso a los cursos desde cualquier lugar y en cualquier momento y estamos comprometidos en hacer del aprendizaje de la tecnología una experiencia simple, interactiva y al alcance de todos.</span></p>
+                            <p>
+                                <span id="cont1n">Somos una empresa dedicada a facilitar educación de calidad en línea en las áreas de tecnología de la información y comunicación. </span>
+                                <span id="cont12n">Ofrecemos cursos interactivos, herramientas de aprendizaje y asesoramiento personalizado para ayudar a nuestros estudiantes a prepararse para una profesión en el campo de la informática. </span>
+                                <span id="cont13n">Contamos con diversos programas de estudios diseñados por expertos, además nuestra plataforma de aprendizaje en línea permite el acceso a los cursos desde cualquier lugar y en cualquier momento y estamos comprometidos en hacer del aprendizaje de la tecnología una experiencia simple, interactiva y al alcance de todos</span>
+                            </p>
                         </div>
                         
                         <input type="radio" name="tabs" id="tabtwo">
@@ -317,7 +319,7 @@
                     <img src="que/q4.svg" alt="" height="40px">
                     <div>
                         <p class="negrita"><b id="esperar4">Son evaluativos</b></p>
-                        <p id="esp4">Los cursos incluyen evaluaciones y retroalimentación regular para medir el progreso y garantizar un aprendizaje efectivo</p>
+                        <p id="esp4">Los cursos incluyen evaluaciones y retroalimentación regular para medir el progreso y garantizar un aprendizaje efectivo.</p>
                     </div>
                 </div>
                 <div class="cont">
@@ -354,7 +356,7 @@
             <div class="row">
                 <ul>
                     <li><a href="index.php#nosotros" id="fo2">Sobre nosotros</a></li>
-                    <li><a href="#" id="fo3">Cursos</a></li>
+                    <li><a href="../index.php" id="fo3">Cursos</a></li>
                     <li><a href="TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
                     <li><a href="cookies.php" id="fo5">Políticas sobre cookies</a></li>
                     <li><a href="#" id="fo6">Contáctanos</a></li>
@@ -363,6 +365,7 @@
             </div>
             
             <div class="row iconos">
+                <ul>
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
                 <a href="#"><i class="fa fa-youtube"></i></a>

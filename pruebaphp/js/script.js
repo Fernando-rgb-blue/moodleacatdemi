@@ -1,3 +1,84 @@
+// para agregar un idmiId
+// Obtén el elemento con la clase 'luz' y agrega un id
+var elementoConClaseLogin = document.querySelector('.login-heading.mb-4');
+if (elementoConClaseLogin) {
+    elementoConClaseLogin.id = 'miId';
+}
+
+var enlaceOlvidoContrasena = document.querySelector('a[href="http://localhost/moodleacatdemi/login/forgot_password.php"]');
+if (enlaceOlvidoContrasena) {
+    enlaceOlvidoContrasena.id = 'OlvidoContrasena';
+}
+
+var inputContrasena = document.getElementById('password');
+if (inputContrasena) {
+    inputContrasena.placeholder = 'Password';
+}
+
+var inputUser = document.getElementById('username');
+if (inputUser) {
+    inputUser.placeholder = 'User';
+}
+
+// pal forgotpassword
+
+
+var recuperar = document.querySelector('.box.py-3.generalbox.boxwidthnormal.boxaligncenter');
+if (recuperar) {
+    recuperar.textContent = 'Para reajustar su contraseña, envíe su nombre de usuario o su dirección de correo electrónico, si podemos encontrarlo en la base de datos, le enviaremos un email con instrucciones para poder acceder de nuevo.';
+    recuperar.id = 'Parareajustar';
+}
+
+
+
+// Obtén todos los elementos con la clase específica
+var elementosMismaClase = document.querySelectorAll('.d-flex.align-self-stretch.align-items-center.mb-0');
+
+// Itera sobre los elementos y asigna un id al que tiene el texto específico
+elementosMismaClase.forEach(function(elemento) {
+    if (elemento.textContent.trim() === 'aasdasdasdaa') {
+        elemento.textContent = 'Buscar por usuario';
+        elemento.id = 'fondoestilo1';
+    }
+    else if(elemento.textContent.trim() === 'Buscar por dirección email') {
+        elemento.id = 'fondoestilo';
+    }
+});
+
+
+// para el a de regresar
+// Crea el enlace dinámicamente
+var enlace = document.createElement('a');
+enlace.id = 'regresar';
+enlace.href = '../login/index.php';
+enlace.className = 'celeste';
+enlace.textContent = 'Regresar';
+
+// Agrega el enlace al cuerpo del documento
+document.body.appendChild(enlace);
+
+
+
+// var h3Elemento = document.querySelector('.d-flex.align-self-stretch.align-items-center.mb-0');
+// if (h3Elemento) {
+//     h3Elemento.textContent = 'Buscar por usuario';
+// }
+
+
+// var divElemento = document.querySelector('.d-flex.align-self-stretch.align-items-center.mb-0');
+// if (divElemento) {
+//     divElemento.id = 'fondoestilo';
+// }
+
+
+
+
+
+
+
+
+
+
 // PARA EL IDIOMA TermsAndConditions.
 function traducirPlaceholder(idElemento, idioma) {
     const placeholderOriginal = document.getElementById(idElemento).getAttribute("placeholder");
@@ -28,6 +109,8 @@ function traducirElemento(idElemento, idioma) {
                 document.getElementById(idElemento).textContent = 'Login';
             }else if ( idElemento == 'cursos' && idioma == 'en'){
                 document.getElementById(idElemento).textContent = 'Courses';
+            }else if ( idElemento == 'cursos' && idioma == 'pt'){
+                document.getElementById(idElemento).textContent = 'Cursos';
             } else{
                 document.getElementById(idElemento).textContent = textoTraducido;
             }
@@ -77,7 +160,6 @@ function cambiarIdioma(idioma) {
             escribenos: "escribenos",
             registrate: "registrate",
             descubre2: "descubre2",
-            puntode: "puntode",
             fo1: "fo1",
             fo2: "fo2",
             fo3: "fo3",
@@ -150,7 +232,50 @@ function cambiarIdioma(idioma) {
             esp5: "esp5",
             esperar6: "esperar6",
             esp6: "esp6",
-            autocomplete: "autocomplete"
+            Terbi1: "Terbi1",
+            Terbi2: "Terbi2",
+            Terbi3: "Terbi3",
+            ryp0: "ryp0",
+            ryp1: "ryp1",
+            ryp2: "ryp2",
+            ryp3: "ryp3",
+            ryp4: "ryp4",
+            iyp0: "iyp0",
+            iyp1: "iyp1",
+            iyp2: "iyp2",
+            iyp3: "iyp3",
+            iyp4: "iyp4",
+            upc0: "upc0",
+            upc1: "upc1",
+            upc2: "upc2",
+            upc3: "upc3",
+            pi0: "pi0",
+            pi1: "pi1",
+            pi2: "pi2",
+            r0: "r0",
+            r1: "r1",
+            r2: "r2",
+            r3: "r3",
+            ctc0: "ctc0",
+            ctc3: "ctc3",
+            ctc2: "ctc2",
+            ctc1: "ctc1",
+            tdc0: "tdc0",
+            tdc1: "tdc1",
+            cn0: "cn0",
+            cn1: "cn1",
+            miId: "miId",
+            loginguestbtn: "loginguestbtn",
+            loginbtn: "loginbtn",
+            OlvidoContrasena: "OlvidoContrasena",
+            fondoestilo: "fondoestilo",
+            fondoestilo1: "fondoestilo1",
+            Parareajustar: "Parareajustar",
+            id_username_label: "id_username_label",
+            id_email_label: "id_email_label",
+            id_submitbuttonusername: "id_submitbuttonusername",
+            regresar: "regresar",
+            autocomplete: "autocomplete",
             
 
         };
@@ -254,9 +379,6 @@ function abrirVentanaYRecargar() {
     // Recargar la página actual
     window.location.reload();
 }
-
-
-
 
 
 

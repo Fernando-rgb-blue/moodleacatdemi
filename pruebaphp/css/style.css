@@ -191,7 +191,7 @@ li .nav-item{
     z-index: 100;
     top: 100%; /* Coloca la lista debajo de la barra de búsqueda */
 }
-input[type="text"] {
+input.search-input[type="text"] {
     padding: 5px;
     border: none;
     border-radius: 3px;
@@ -493,7 +493,9 @@ a.celeste.test:hover{
 /* INICIO footer */
 .footer{
     background:#13213d;
-    padding:30px 0px;
+    padding: 0px 0px;
+    padding-bottom: 30px;
+    padding-top: 11px;
     font-family: 'Play', sans-serif;
     text-align: left;
 }

@@ -35,7 +35,7 @@
             <div class="nav-wrapper">
                 <div class="grad-bar"></div>
                     <nav class="navbar">
-                        <a href="index.php"><img src="que/cambiado.svg" alt="Company Logo" class="lo"></a>
+                        <a><img src="que/cambiado.svg" id="logoHome" alt="Company Logo" class="lo"></a>
                         <div class="menu-toggle" id="mobile-menu">
                             <span class="bar"></span>
                             <span class="bar"></span>
@@ -47,11 +47,11 @@
                                 <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
                                 <ul id="suggestions" class="dropdown-content"></ul>
                             </li>
-                            <li class="nav-item"><a href="#" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="../index.php" id="cursos">Cursos</a></li>
                             <li class="nav-item"><a href="help.php" id="ayuda">Ayuda</a></li>
                             <li class="nav-item">
                                 <div class="dropdown" id="idiomaDropdown">
-                                    <a href="#"><span id="idioma">Idioma</span></a>
+                                    <a><span id="idioma">Idioma</span></a>
                                     <div class="dropdown-content">
                                         <div id="ingles" class="dropdown-option" onclick="cambiarIdioma('en')">Inglés</div>
                                         <div id="espanol" class="dropdown-option" onclick="cambiarIdioma('es')">Español</div>
@@ -65,7 +65,7 @@
                             <!-- <li class="nav-item iniciar"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/INICIO_SESION/index.html">Ingresar</a></li>
                             <li class="nav-item crear"><a id="registrarse" href="#">Registrarse</a></li> -->
                             <?php
-                                if (!empty($USER->firstname) && !empty($USER->lastname) && strtoupper(substr($USER->firstname, 0, 1)) !='&' ) {
+                                if (!empty($USER->firstname) && !empty($USER->lastname) && strtoupper(substr($USER->firstname, 0, 1)) !='&' && strtoupper($USER->firstname) !='INVITADO') {
                                     echo '<li class="nav-item iniciar">';
                                     echo '<a id="desloguear" href="" target="_blank" onclick="abrirVentanaYRecargar()">Salir sesión</a>';
                                     echo '</li>';
@@ -87,7 +87,11 @@
     </header>
     <main>
         <div class="relleno"></div>
-        <!--Ayuda -->
+        <!-- esto esta para q no haya error en la hora de traducir -->
+        <input type="text" name="country" id="autocomplete" placeholder="¿Cómo podemos ayudarte? Ejm. cursos, cuenta, pagos ..." style="display: none">                        
+
+
+        <!--cookies -->
         <section class="features headerayuda">
             <h3 class="ayudaheader" id="ayudaheader">Políticas sobre cookies</h3>
         </section>
@@ -179,7 +183,7 @@
                     <img src="que/q4.svg" alt="" height="40px">
                     <div>
                         <p class="negrita"><b id="esperar4">Son evaluativos</b></p>
-                        <p id="esp4">Los cursos incluyen evaluaciones y retroalimentación regular para medir el progreso y garantizar un aprendizaje efectivo</p>
+                        <p id="esp4">Los cursos incluyen evaluaciones y retroalimentación regular para medir el progreso y garantizar un aprendizaje efectivo.</p>
                     </div>
                 </div>
                 <div class="cont">
@@ -214,7 +218,7 @@
             <div class="row">
                 <ul>
                     <li><a href="index.php#nosotros" id="fo2">Sobre nosotros</a></li>
-                    <li><a href="#" id="fo3">Cursos</a></li>
+                    <li><a href="../index.php" id="fo3">Cursos</a></li>
                     <li><a href="TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
                     <li><a href="cookies.php" id="fo5">Políticas sobre cookies</a></li>
                     <li><a href="#" id="fo6">Contáctanos</a></li>
@@ -223,6 +227,7 @@
             </div>
             
             <div class="row iconos">
+                <ul>
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
                 <a href="#"><i class="fa fa-youtube"></i></a>
@@ -338,7 +343,14 @@
                 }
             });
 
-            
+            // para poner un 'a' a mi img del logo
+            var miImagen2 = document.getElementById('logoHome');
+
+            // Agregamos un evento de clic a la imagen
+            miImagen2.addEventListener('click', function() {
+                // Redirigimos la página a "google.com" al hacer clic en la imagen
+                window.location.href = 'index.php';
+            });
         </script>
 </body>
 </html>
