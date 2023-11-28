@@ -31,7 +31,7 @@
     <title>Cookies | Acatdemy</title>
 </head>
 <body>
-    <header class="page-wrapper">
+<header class="page-wrapper">
             <div class="nav-wrapper">
                 <div class="grad-bar"></div>
                     <nav class="navbar">
@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                             </li>
-                            
+
                             <!-- <li class="nav-item iniciar"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/INICIO_SESION/index.html">Ingresar</a></li>
                             <li class="nav-item crear"><a id="registrarse" href="#">Registrarse</a></li> -->
                             <?php
@@ -76,12 +76,12 @@
                                     echo '</a>';
                                     echo '</li>';
                                 } else {
-                                    echo '<li class="nav-item iniciar prim"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/Inter_Inic_Sess/index.html">Ingresar</a></li>';
+                                    echo '<li class="nav-item iniciar prim"><a id="iniciar" href="../login/index.php">Ingresar</a></li>';
                                     echo '<li class="nav-item crear prim"><a id="registrarse" href="#">Registrarse</a></li>';
                                 }
                             ?>
                             
-                        </ul>
+                        </ul> 
                     </nav>
                 </div>
     </header>

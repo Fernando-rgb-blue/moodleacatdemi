@@ -77,7 +77,7 @@
                                     echo '</a>';
                                     echo '</li>';
                                 } else {
-                                    echo '<li class="nav-item iniciar prim"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/Inter_Inic_Sess/index.html">Ingresar</a></li>';
+                                    echo '<li class="nav-item iniciar prim"><a id="iniciar" href="../login/index.php">Ingresar</a></li>';
                                     echo '<li class="nav-item crear prim"><a id="registrarse" href="#">Registrarse</a></li>';
                                 }
                             ?>
