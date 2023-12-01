@@ -5,7 +5,7 @@ if (elementoConClaseLogin) {
     elementoConClaseLogin.id = 'miId';
 }
 
-var enlaceOlvidoContrasena = document.querySelector('a[href="http://localhost/moodleacatdemi/login/forgot_password.php"]');
+var enlaceOlvidoContrasena = document.querySelector('a[href="http://167.172.137.234/moodleacatdemi/login/forgot_password.php"]');
 if (enlaceOlvidoContrasena) {
     enlaceOlvidoContrasena.id = 'OlvidoContrasena';
 }
@@ -42,6 +42,18 @@ elementosMismaClase.forEach(function(elemento) {
     }
     else if(elemento.textContent.trim() === 'Buscar por dirección email') {
         elemento.id = 'fondoestilo';
+    }
+});
+
+// pa COOKIES
+document.addEventListener('DOMContentLoaded', function() {
+    // Encuentra el elemento del botón por su clase
+    var botonCookies = document.querySelector('.ml-auto.btn.btn-link');
+
+    // Verifica si el elemento existe antes de intentar modificarlo
+    if (botonCookies) {
+        // Cambia el texto del botón
+        botonCookies.innerHTML = '<i class="fa fa-question-circle"></i> Cookies';
     }
 });
 

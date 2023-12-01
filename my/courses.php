@@ -105,3 +105,47 @@ echo $OUTPUT->footer();
 $eventparams = array('context' => $context);
 $event = \core\event\mycourses_viewed::create($eventparams);
 $event->trigger();
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+        <script>
+            // Obtén el elemento por su clase
+            var miEnlace = document.querySelector('.navbar-brand.d-none.d-md-flex.align-items-center.m-0.mr-4.p-0.aabtn');
+
+            // Verifica si se encontró el elemento
+            if (miEnlace) {
+                // Cambia el atributo href
+                miEnlace.href = '../pruebaphp/index.php';
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                // Encuentra todos los elementos del enlace por su clase
+                var enlaces = document.querySelectorAll('.nav-link');
+
+                enlaces.forEach(function(enlacePrincipal) {
+                    // Verifica si el contenido del enlace es 'Página Principal'
+                    if (enlacePrincipal.textContent.trim() === 'Página Principal' || enlacePrincipal.textContent.trim() === 'Home') {
+                        // Obtiene el valor del atributo lang de la etiqueta html
+                        var lang = document.documentElement.lang;
+
+                        // Cambia el texto del enlace según el valor de lang
+                        if (lang === 'en') {
+                            enlacePrincipal.textContent = 'Courses';
+                        } else {
+                            enlacePrincipal.textContent = 'Cursos';
+                        }
+                    }
+                });
+            });
+
+        </script>
+</body>
+</html>
+

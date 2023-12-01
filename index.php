@@ -150,7 +150,12 @@ echo $OUTPUT->footer();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Estilos para superponer el enlace sobre el div */
-        
+        section#feature{
+            display: none;
+        }
+        section#numbers{
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -165,10 +170,19 @@ echo $OUTPUT->footer();
             }
 
             document.addEventListener('DOMContentLoaded', function() {
-                // Coloca aquí el código para asegurarte de que se ejecute después de la carga completa del DOM
+                // Encuentra el elemento del enlace por su clase
                 var enlacePrincipal = document.querySelector('.nav-link.active');
+
                 if (enlacePrincipal) {
-                    enlacePrincipal.textContent = 'Cursos';
+                    // Obtiene el valor del atributo lang de la etiqueta html
+                    var lang = document.documentElement.lang;
+
+                    // Cambia el texto del enlace según el valor de lang
+                    if (lang === 'en') {
+                        enlacePrincipal.textContent = 'Courses';
+                    } else{
+                        enlacePrincipal.textContent = 'Cursos';
+                    }
                 }
             });
         </script>
