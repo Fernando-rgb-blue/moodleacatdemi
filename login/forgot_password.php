@@ -87,9 +87,18 @@ $token = optional_param('token', false, PARAM_ALPHANUM);
     </header>
     
     
-                                
+    <script>                            
+        // para el a de regresar
+        // Crea el enlace dinámicamente
+        var enlace = document.createElement('a');
+        enlace.id = 'regresar';
+        enlace.href = '../login/index.php';
+        enlace.className = 'celeste';
+        enlace.textContent = 'Regresar';
 
-                        
+        // Agrega el enlace al cuerpo del documento
+        document.body.appendChild(enlace);
+    </script>                    
     </body>
 </html>   
 

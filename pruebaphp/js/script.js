@@ -60,14 +60,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // para el a de regresar
 // Crea el enlace dinámicamente
-var enlace = document.createElement('a');
-enlace.id = 'regresar';
-enlace.href = '../login/index.php';
-enlace.className = 'celeste';
-enlace.textContent = 'Regresar';
+// var enlace = document.createElement('a');
+// enlace.id = 'regresar';
+// enlace.href = '../login/index.php';
+// enlace.className = 'celeste';
+// enlace.textContent = 'Regresar';
 
-// Agrega el enlace al cuerpo del documento
-document.body.appendChild(enlace);
+// // Agrega el enlace al cuerpo del documento
+// document.body.appendChild(enlace);
 
 
 
@@ -380,13 +380,13 @@ var miImagen = document.getElementById('imgusuario');
 // Agregamos un evento de clic a la imagen
 miImagen.addEventListener('click', function() {
     // Redirigimos la página a "google.com" al hacer clic en la imagen
-    window.location.href = 'http://167.172.137.234/moodleacatdemi/user/profile.php';
+    window.location.href = '../user/profile.php';
 });
 
 // pa abrir y recargar la pag actual
 function abrirVentanaYRecargar() {
     // Abrir una nueva ventana pa salir
-    var nuevaVentana = window.open("http://167.172.137.234/moodleacatdemi/login/logout.php?sesskey=Sdawna34sC", "_blank");
+    var nuevaVentana = window.open("../login/logout.php?sesskey=Sdawna34sC", "_blank");
 
     // Recargar la página actual
     window.location.reload();

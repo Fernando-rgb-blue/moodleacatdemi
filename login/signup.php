@@ -120,3 +120,6 @@ if ($mform_signup instanceof renderable) {
     $mform_signup->display();
 }
 echo $OUTPUT->footer();
+
+
+include('../pruebaphp/onlystyles.php');

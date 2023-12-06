@@ -31,7 +31,7 @@
     <title>Cookies | Acatdemy</title>
 </head>
 <body>
-<header class="page-wrapper">
+    <header class="page-wrapper">
             <div class="nav-wrapper">
                 <div class="grad-bar"></div>
                     <nav class="navbar">
@@ -71,13 +71,13 @@
                                     echo '</li>';
                                     echo '<li class="nav-item crear">';
                                     echo '<img src="que/usuario.svg" height="20px" alt="" id="imgusuario">';
-                                    echo '<a href="http://167.172.137.234/moodleacatdemi/user/profile.php">';
+                                    echo '<a href="../user/profile.php">';
                                     echo '<span>' . strtoupper(substr($USER->firstname, 0, 1)) . strtoupper(substr($USER->lastname, 0, 1)) . '</span>';
                                     echo '</a>';
                                     echo '</li>';
                                 } else {
                                     echo '<li class="nav-item iniciar prim"><a id="iniciar" href="../login/index.php">Ingresar</a></li>';
-                                    echo '<li class="nav-item crear prim"><a id="registrarse" href="#">Registrarse</a></li>';
+                                    echo '<li class="nav-item crear prim"><a id="registrarse" href="../login/signup.php">Registrarse</a></li>';
                                 }
                             ?>
                             
