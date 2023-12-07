@@ -121,5 +121,17 @@ if ($mform_signup instanceof renderable) {
 }
 echo $OUTPUT->footer();
 
-
-include('../pruebaphp/onlystyles.php');
+?> 
+<!DOCTYPE html>
+<html lang="es" class="my-page">
+<body>
+    <head>
+        <style>
+            .btn.btn-primary{
+                background-color: #00c4db;
+                border-color: rgb(179, 179, 179);
+            }
+        </style>
+    </head>
+    
+</html>   
