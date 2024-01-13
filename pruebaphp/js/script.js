@@ -176,7 +176,6 @@ function cambiarIdioma(idioma) {
             fo2: "fo2",
             fo3: "fo3",
             fo4: "fo4",
-            fo5: "fo5",
             fo6: "fo6",
             fo7: "fo7",
             sobre: "sobre",

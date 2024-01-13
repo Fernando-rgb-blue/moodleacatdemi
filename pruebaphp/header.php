@@ -32,9 +32,8 @@
                         <li><a href="../pruebaphp/index.php#nosotros" id="fo2">Sobre nosotros</a></li>
                         <li><a href="../index.php" id="fo3">Cursos</a></li>
                         <li><a href="../pruebaphp/TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
-                        <li><a href="../pruebaphp/cookies.php" id="fo5">Políticas sobre cookies</a></li>
-                        <li><a href="#" id="fo6">Contáctanos</a></li>
-                        <li><a href="help.php" id="fo7">Ayuda</a></li>
+                        <li><a href="../pruebaphp/help.php#explora" id="fo6">Contáctanos</a></li>
+                        <li><a href="../pruebaphp/help.php" id="fo7">Ayuda</a></li>
                     </ul>
                 </div>
                 

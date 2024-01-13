@@ -4,15 +4,16 @@
     $redirect = $CFG->wwwroot.'/pruebaphp/index.php';
     $campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
 
-    $resultados = $DB->get_records_sql("SELECT DISTINCT titulo FROM {cursosp}"); 
-    
-    // Crear un array asociativo en PHP
+    $resultados = $DB->get_records_sql("SELECT DISTINCT titulo, url FROM {cursosp}");
+
     $ocursos = [];
-    $posi = 0;
+    $urls = [];
+
     foreach ($resultados as $resultado) {
-        $ocursos[$posi] = $resultado->titulo;
-        $posi++;
+        $ocursos[] = $resultado->titulo;
+        $urls[] = $resultado->url;
     }
+
 ?> 
 
 <!DOCTYPE html>
@@ -20,6 +21,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="que/Alogo.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!--FONT AWESOME-->
@@ -96,7 +99,7 @@
         </section>
         <!-- mesaje de descripcion -->
         <section class="feature-container des">
-            <p><strong  id="somos"> Somos una empresa dedicada a facilitar educación de calidad en línea en las áreas de <br>tecnología de la información y comunicación.</strong></p>
+            <p><strong  id="somos"> Ofrecemos servicios educativos en línea especializados en la preparación para exámenes de admisión, <br>centrándonos en proporcionar cursos de calidad académica</strong></p>
             <p>
                 <a id="mas" href="#nosotros" class="celeste">Más información</a>
             </p>
@@ -109,7 +112,7 @@
                     <div class="center-content">
                         <h3 class="explora ti" id="explora">Explora el futuro de la tecnología e informática con nosotros</h3>
                         <p class="explora" id="accede">Descubre productos innovadores y accede a cursos gratuitos para potenciar tus habilidades y conocimientos.</p>
-                        <a href="#" class="celeste" id="registrate">Regístrate Ahora</a>
+                        <a href="../login/signup.php" class="celeste" id="registrate">Regístrate Ahora</a>
                     </div>
                 </div>
                 <div class="feature-container trespor ini">
@@ -137,9 +140,9 @@
             echo '<b id="creador1">Un curso de ' . $campos[1]->autor . '</b><br>';
             echo '<span id="contC1">' . $campos[1]->descripcion . '</span><br>';
             echo '<br>';
-            echo '<b id="contenido1">Contenido:</b> <span id="horas1">'. $campos[1]->horas . ' horas</span></p>';
+            echo '<b id="contenido1">Contenido:</b> <span id="horas1">'. $campos[1]->horas . '</span></p>';
             echo '</div>';
-            echo '<a href="#" class="celeste curso" id="ir1">Ir al curso</a>';
+            echo '<a href="' . $campos[1]->url . '" class="celeste curso" id="ir1">Ir al curso</a>';
             echo '</div>';
 
 
@@ -151,9 +154,9 @@
             echo '<b id="creador2">Un curso de ' . $campos[2]->autor . '</b><br>';
             echo '<span id="contC2">' . $campos[2]->descripcion . '</span><br>';
             echo '<br>';
-            echo '<b id="contenido2">Contenido:</b> <span id="horas2">'. $campos[2]->horas . ' horas</span></p>';
+            echo '<b id="contenido2">Contenido:</b> <span id="horas2">'. $campos[2]->horas . '</span></p>';
             echo '</div>';
-            echo '<a href="#" class="celeste curso" id="ir2">Ir al curso</a>';
+            echo '<a href="' . $campos[2]->url . '" class="celeste curso" id="ir2">Ir al curso</a>';
             echo '</div>';
 
             // Sección 3
@@ -164,9 +167,9 @@
             echo '<b id="creador3">Un curso de ' . $campos[3]->autor . '</b><br>';
             echo '<span id="contC3">' . $campos[3]->descripcion . '</span><br>';
             echo '<br>';
-            echo '<b id="contenido3">Contenido:</b> <span id="horas3">'. $campos[3]->horas . ' horas</span></p>';
+            echo '<b id="contenido3">Contenido:</b> <span id="horas3">'. $campos[3]->horas . '</span></p>';
             echo '</div>';
-            echo '<a href="#" class="celeste curso" id="ir3">Ir al curso</a>';
+            echo '<a href="' . $campos[3]->url . '" class="celeste curso" id="ir3">Ir al curso</a>';
             echo '</div>';  
 
             echo '</section>';
@@ -181,9 +184,9 @@
             echo '<b id="creador4">Un curso de ' . $campos[4]->autor . '</b><br>';
             echo '<span id="contC4">' . $campos[4]->descripcion . '</span><br>';
             echo '<br>';
-            echo '<b id="contenido4">Contenido:</b> <span id="horas4">'. $campos[4]->horas . ' horas</span></p>';
+            echo '<b id="contenido4">Contenido:</b> <span id="horas4">'. $campos[4]->horas . '</span></p>';
             echo '</div>';
-            echo '<a href="#" class="celeste curso" id="ir4">Ir al curso</a>';
+            echo '<a href="' . $campos[4]->url . '" class="celeste curso" id="ir4">Ir al curso</a>';
             echo '</div>';
 
 
@@ -195,9 +198,9 @@
             echo '<b id="creador5">Un curso de ' . $campos[5]->autor . '</b><br>';
             echo '<span id="contC5">' . $campos[5]->descripcion . '</span><br>';
             echo '<br>';
-            echo '<b id="contenido5">Contenido:</b> <span id="horas5">'. $campos[5]->horas . ' horas</span></p>';
+            echo '<b id="contenido5">Contenido:</b> <span id="horas5">'. $campos[5]->horas . '</span></p>';
             echo '</div>';
-            echo '<a href="#" class="celeste curso" id="ir5">Ir al curso</a>';
+            echo '<a href="' . $campos[5]->url . '" class="celeste curso" id="ir5">Ir al curso</a>';
             echo '</div>';
 
             // Sección 6
@@ -208,9 +211,9 @@
             echo '<b id="creador6">Un curso de ' . $campos[6]->autor . '</b><br>';
             echo '<span id="contC6">' . $campos[6]->descripcion . '</span><br>';
             echo '<br>';
-            echo '<b id="contenido6">Contenido:</b> <span id="horas6">'. $campos[6]->horas . ' horas</span></p>';
+            echo '<b id="contenido6">Contenido:</b> <span id="horas6">'. $campos[6]->horas . '</span></p>';
             echo '</div>';
-            echo '<a href="#" class="celeste curso" id="ir6">Ir al curso</a>';
+            echo '<a href="' . $campos[6]->url . '" class="celeste curso" id="ir6">Ir al curso</a>';
             echo '</div>';  
 
             echo '</section>';
@@ -221,9 +224,8 @@
         <input type="text" name="country" id="autocomplete" placeholder="¿Cómo podemos ayudarte? Ejm. cursos, cuenta, pagos ..." style="display: none">
 
         <section class="features dos">
-            <a href="#" class="vercursos" id="vercursos">Ver más cursos de Acatdemy →</a>
+            <a href="../index.php" class="vercursos" id="vercursos">Ver más cursos de Acatdemy →</a>
         </section>
-        
         
         
         <!--SOBRE NOSOTROS -->
@@ -277,7 +279,7 @@
                 <div class="center-content">
                     <h3 id="trad" class="explora ti blanco">Descubre por dónde comenzar</h3>
                     <p id="trad1" class="explora blanco">Realiza el test y descubre que cursos se adaptarían a ti.</p>
-                    <a href="#" class="celeste test" id="test">Realizar Test</a>
+                    <a href="https://www.elegircarrera.net/test-vocacional/" target="_blank" class="celeste test" id="test">Realizar Test</a>
                 </div>
             </div>
         </section>
@@ -358,8 +360,7 @@
                     <li><a href="index.php#nosotros" id="fo2">Sobre nosotros</a></li>
                     <li><a href="../index.php" id="fo3">Cursos</a></li>
                     <li><a href="TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
-                    <li><a href="cookies.php" id="fo5">Políticas sobre cookies</a></li>
-                    <li><a href="#" id="fo6">Contáctanos</a></li>
+                    <li><a href="help.php#explora" id="fo6">Contáctanos</a></li>
                     <li><a href="help.php" id="fo7">Ayuda</a></li>
                 </ul>
             </div>
@@ -382,6 +383,8 @@
             // Array de opciones de sugerencias ocursos
             // const opciones = ["programacion en python", "redes y topologias", "switch"];
             const opciones = <?php echo json_encode($ocursos); ?>;
+            const opurl = <?php echo json_encode($urls); ?>;
+
             const lupaImagen = document.getElementById("lupaImagen");
 
             // Maneja el clic en la imagen de la lupa
@@ -453,16 +456,18 @@
                         // Por ejemplo, mostrar un mensaje de error o realizar otra acción.
                         break;
                     default:
-                        // Busca la opción seleccionada en el arreglo 'opciones'
+                        // Busca la opción seleccionada en el arreglo 'opciones' opciones opurl
                         const selectedIndex = opciones.findIndex(option => option === clickedSuggestion);
 
                         if (selectedIndex !== -1 && opciones[selectedIndex]) {
-                            // Si la opción está en el arreglo y hay una URL correspondiente en linkdirec, redirige a esa URL
-                            redirigirURL(opciones[selectedIndex]);
+                            const urlSeleccionada = opurl[selectedIndex];
+                            // Redirige directamente a la URL
+                            redirigirURL(urlSeleccionada);
                         } else {
-                            // Si la opción no se encuentra en el arreglo o no hay una URL correspondiente, redirige a home.html por defecto
-                            redirigirURL("home.html");
+                            // Si la opción no se encuentra en el arreglo, redirige a home.html por defecto
+                            redirigirURL("index.html");
                         }
+
                         break;
                 }
             });

@@ -3,13 +3,14 @@
     global $CFG, $OUTPUT, $PAGE, $DB, $USER;
     $redirect = $CFG->wwwroot.'/pruebaphp/help.php';
 
-    $resultados = $DB->get_records_sql("SELECT DISTINCT titulo FROM {cursosp}"); 
-    // Crear un array asociativo en PHP
+    $resultados = $DB->get_records_sql("SELECT DISTINCT titulo, url FROM {cursosp}");
+
     $ocursos = [];
-    $posi = 0;
+    $urls = [];
+
     foreach ($resultados as $resultado) {
-        $ocursos[$posi] = $resultado->titulo;
-        $posi++;
+        $ocursos[] = $resultado->titulo;
+        $urls[] = $resultado->url;
     }
 ?>
 <!DOCTYPE html>
@@ -17,6 +18,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="que/Alogo.ico" type="image/x-icon">
+
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/ayuda.css">
 
@@ -108,25 +112,25 @@
                 <div class="accordion-item">
                     <button aria-expanded="false"><span id="accordion-button-1" class="accordion-title">¿Como crear una cuenta en Acatdemy?</span><span class="icon" aria-hidden="true"></span></button>
                     <div class="accordion-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                    <p>Primero te diriges al boton de registrarte, llenas los datos de manera correcta para finalmente dar click en el botón crear cuenta..</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button aria-expanded="false"><span id="accordion-button-2" class="accordion-title">¿Cómo son los cursos de Acatdemy?</span><span class="icon" aria-hidden="true"></span></button>
                     <div class="accordion-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                    <p>Los contenidos se encuentran organizados de manera semanal, acompañados de la teoría esencial y relevante, también se dispone de un cuestionario correspondiente a cada semana.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button aria-expanded="false"><span id="accordion-button-3" class="accordion-title">No encuentro mi curso en mi perfil</span><span class="icon" aria-hidden="true"></span></button>
                     <div class="accordion-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                    <p>Quizás sería recomendable actualizar la página o aguardar un breve periodo hasta que se confirme el pago, en cualquier caso, este proceso no debería demorar más de 24 horas.</p>
                     </div>
                 </div>
                 <div class="accordion-item">
                     <button aria-expanded="false"><span id="accordion-button-4" class="accordion-title">¿Cómo es el acceso a mi curso cuando lo compro?</span><span class="icon" aria-hidden="true"></span></button>
                     <div class="accordion-content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elementum sagittis vitae et leo duis ut. Ut tortor pretium viverra suspendisse potenti.</p>
+                    <p>Los cursos se encuentran el la parte de 'Área personal' o dentro de 'Mis cursos'.</p>
                     </div>
                 </div>
                 <div class="accordion-item oculto">
@@ -199,7 +203,7 @@
                 <div class="center-content">
                     <h3 id="trad" class="explora ti blanco">Descubre por dónde comenzar</h3>
                     <p id="trad1" class="explora blanco">Realiza el test y descubre que cursos se adaptarían a ti.</p>
-                    <a href="#" class="celeste test" id="test">Realizar Test</a>
+                    <a href="https://www.elegircarrera.net/test-vocacional/" target="_blank" class="celeste test" id="test">Realizar Test</a>
                 </div>
             </div>
         </section>
@@ -278,8 +282,7 @@
                     <li><a href="index.php#nosotros" id="fo2">Sobre nosotros</a></li>
                     <li><a href="../index.php" id="fo3">Cursos</a></li>
                     <li><a href="TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
-                    <li><a href="cookies.php" id="fo5">Políticas sobre cookies</a></li>
-                    <li><a href="#" id="fo6">Contáctanos</a></li>
+                    <li><a href="help.php#explora" id="fo6">Contáctanos</a></li>
                     <li><a href="help.php" id="fo7">Ayuda</a></li>
                 </ul>
             </div>
@@ -300,6 +303,7 @@
             // Array de opciones de sugerencias
             // const opciones = ["programacion en python", "redes y topologias", "switch"];
             const opciones = <?php echo json_encode($ocursos); ?>;
+            const opurl = <?php echo json_encode($urls); ?>;
             const lupaImagen = document.getElementById("lupaImagen");
 
             // Maneja el clic en la imagen de la lupa
@@ -371,16 +375,18 @@
                         // Por ejemplo, mostrar un mensaje de error o realizar otra acción.
                         break;
                     default:
-                        // Busca la opción seleccionada en el arreglo 'opciones'
+                        // Busca la opción seleccionada en el arreglo 'opciones' opciones opurl
                         const selectedIndex = opciones.findIndex(option => option === clickedSuggestion);
 
                         if (selectedIndex !== -1 && opciones[selectedIndex]) {
-                            // Si la opción está en el arreglo y hay una URL correspondiente en linkdirec, redirige a esa URL
-                            redirigirURL(opciones[selectedIndex]);
+                            const urlSeleccionada = opurl[selectedIndex];
+                            // Redirige directamente a la URL
+                            redirigirURL(urlSeleccionada);
                         } else {
-                            // Si la opción no se encuentra en el arreglo o no hay una URL correspondiente, redirige a home.html por defecto
-                            redirigirURL("home.html");
+                            // Si la opción no se encuentra en el arreglo, redirige a home.html por defecto
+                            redirigirURL("index.html");
                         }
+
                         break;
                 }
             });

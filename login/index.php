@@ -1,47 +1,47 @@
 <?php
 
-// This file is part of Moodle - http://moodle.org/
-//
-// Moodle is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Moodle is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+    // This file is part of Moodle - http://moodle.org/
+    //
+    // Moodle is free software: you can redistribute it and/or modify
+    // it under the terms of the GNU General Public License as published by
+    // the Free Software Foundation, either version 3 of the License, or
+    // (at your option) any later version.
+    //
+    // Moodle is distributed in the hope that it will be useful,
+    // but WITHOUT ANY WARRANTY; without even the implied warranty of
+    // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    // GNU General Public License for more details.
+    //
+    // You should have received a copy of the GNU General Public License
+    // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Main login page.
- *
- * @package    core
- * @subpackage auth
- * @copyright  1999 onwards Martin Dougiamas  http://dougiamas.com
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
+    /**
+     * Main login page.
+     *
+     * @package    core
+     * @subpackage auth
+     * @copyright  1999 onwards Martin Dougiamas  http://dougiamas.com
+     * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+     */
 
-require('../config.php');
-require_once('lib.php');
+    require('../config.php');
+    require_once('lib.php');
 
-// mi php
-require_once('../config.php');
-global $CFG, $OUTPUT, $PAGE, $DB, $USER;
-$redirect = $CFG->wwwroot.'index.php';
-$campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
+    // mi php
+    require_once('../config.php');
+    global $CFG, $OUTPUT, $PAGE, $DB, $USER;
+    $redirect = $CFG->wwwroot.'index.php';
+    $campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
 
-$resultados = $DB->get_records_sql("SELECT DISTINCT titulo FROM {cursosp}"); 
+    $resultados = $DB->get_records_sql("SELECT DISTINCT titulo, url FROM {cursosp}");
 
-// Crear un array asociativo en PHP
-$ocursos = [];
-$posi = 0;
-foreach ($resultados as $resultado) {
-    $ocursos[$posi] = $resultado->titulo;
-    $posi++;
-}
+    $ocursos = [];
+    $urls = [];
+
+    foreach ($resultados as $resultado) {
+        $ocursos[] = $resultado->titulo;
+        $urls[] = $resultado->url;
+    }
 
 ?> 
 
@@ -119,6 +119,7 @@ foreach ($resultados as $resultado) {
             // Array de opciones de sugerencias ocursos
             // const opciones = ["programacion en python", "redes y topologias", "switch"];
             const opciones = <?php echo json_encode($ocursos); ?>;
+            const opurl = <?php echo json_encode($urls); ?>;
             const lupaImagen = document.getElementById("lupaImagen");
 
             // Maneja el clic en la imagen de la lupa
@@ -190,16 +191,18 @@ foreach ($resultados as $resultado) {
                         // Por ejemplo, mostrar un mensaje de error o realizar otra acción.
                         break;
                     default:
-                        // Busca la opción seleccionada en el arreglo 'opciones'
+                        // Busca la opción seleccionada en el arreglo 'opciones' opciones opurl
                         const selectedIndex = opciones.findIndex(option => option === clickedSuggestion);
 
                         if (selectedIndex !== -1 && opciones[selectedIndex]) {
-                            // Si la opción está en el arreglo y hay una URL correspondiente en linkdirec, redirige a esa URL
-                            redirigirURL(opciones[selectedIndex]);
+                            const urlSeleccionada = opurl[selectedIndex];
+                            // Redirige directamente a la URL
+                            redirigirURL(urlSeleccionada);
                         } else {
-                            // Si la opción no se encuentra en el arreglo o no hay una URL correspondiente, redirige a home.html por defecto
-                            redirigirURL("home.html");
+                            // Si la opción no se encuentra en el arreglo, redirige a home.html por defecto
+                            redirigirURL("index.html");
                         }
+
                         break;
                 }
             });

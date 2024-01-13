@@ -3,13 +3,14 @@
     global $CFG, $OUTPUT, $PAGE, $DB, $USER;
     $redirect = $CFG->wwwroot.'/pruebaphp/cookies.php';
 
-    $resultados = $DB->get_records_sql("SELECT DISTINCT titulo FROM {cursosp}"); 
-    // Crear un array asociativo en PHP
+    $resultados = $DB->get_records_sql("SELECT DISTINCT titulo, url FROM {cursosp}");
+
     $ocursos = [];
-    $posi = 0;
+    $urls = [];
+
     foreach ($resultados as $resultado) {
-        $ocursos[$posi] = $resultado->titulo;
-        $posi++;
+        $ocursos[] = $resultado->titulo;
+        $urls[] = $resultado->url;
     }
 ?>
 <!DOCTYPE html>
@@ -17,6 +18,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="que/Alogo.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/ayuda.css">
 
@@ -28,7 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js" defer></script>
-    <title>Términos yCondiciones | Acatdemy</title>
+    <title>Términos y Condiciones | Acatdemy</title>
 </head>
 <body>
 <header class="page-wrapper">
@@ -188,7 +191,7 @@
                 <div class="center-content">
                     <h3 id="trad" class="explora ti blanco">Descubre por dónde comenzar</h3>
                     <p id="trad1" class="explora blanco">Realiza el test y descubre que cursos se adaptarían a ti.</p>
-                    <a href="#" class="celeste test" id="test">Realizar Test</a>
+                    <a href="https://www.elegircarrera.net/test-vocacional/" target="_blank" class="celeste test" id="test">Realizar Test</a>
                 </div>
             </div>
         </section>
@@ -267,8 +270,7 @@
                     <li><a href="index.php#nosotros" id="fo2">Sobre nosotros</a></li>
                     <li><a href="../index.php" id="fo3">Cursos</a></li>
                     <li><a href="TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
-                    <li><a href="cookies.php" id="fo5">Políticas sobre cookies</a></li>
-                    <li><a href="#" id="fo6">Contáctanos</a></li>
+                    <li><a href="help.php#explora" id="fo6">Contáctanos</a></li>
                     <li><a href="help.php" id="fo7">Ayuda</a></li>
                 </ul>
             </div>
@@ -282,13 +284,14 @@
                 </ul>
             </div>
         </div>
-    </footer>
+    </footer> 
     
     
         <script>
             // Array de opciones de sugerencias
             // const opciones = ["programacion en python", "redes y topologias", "switch"];
             const opciones = <?php echo json_encode($ocursos); ?>;
+            const opurl = <?php echo json_encode($urls); ?>;
             const lupaImagen = document.getElementById("lupaImagen");
 
             // Maneja el clic en la imagen de la lupa
@@ -356,24 +359,23 @@
 
                 switch (clickedSuggestion) {
                     case "Curso no encontrado":
-                    // Aquí puedes manejar el comportamiento personalizado para "Curso no encontrado"
-                    // Por ejemplo, mostrar un mensaje de error o realizar otra acción.
-                    break;
-                    case "redes y topologias":
-                    // Redirige al usuario a cursos.html
-                    redirigirURL("cursos.html");
-                    break;
-                    case "switch":
-                    // Redirige al usuario a home.html
-                    redirigirURL("home.html");
-                    break;
-                    case "programacion en python":
-                    // Redirige al usuario a google.com
-                    redirigirURL("https://www.google.com");
-                    break;
+                        // Aquí puedes manejar el comportamiento personalizado para "Curso no encontrado"
+                        // Por ejemplo, mostrar un mensaje de error o realizar otra acción.
+                        break;
                     default:
-                    // Por defecto, redirige al usuario a home.html
-                    redirigirURL("home.html");
+                        // Busca la opción seleccionada en el arreglo 'opciones' opciones opurl
+                        const selectedIndex = opciones.findIndex(option => option === clickedSuggestion);
+
+                        if (selectedIndex !== -1 && opciones[selectedIndex]) {
+                            const urlSeleccionada = opurl[selectedIndex];
+                            // Redirige directamente a la URL
+                            redirigirURL(urlSeleccionada);
+                        } else {
+                            // Si la opción no se encuentra en el arreglo, redirige a home.html por defecto
+                            redirigirURL("index.html");
+                        }
+
+                        break;
                 }
             });
 
