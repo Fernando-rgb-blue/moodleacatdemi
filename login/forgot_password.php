@@ -54,7 +54,7 @@ $token = optional_param('token', false, PARAM_ALPHANUM);
             <div class="nav-wrapper">
                 <div class="grad-bar"></div>
                     <nav class="navbar">
-                        <a><img src="../pruebaphp/que/cambiado.svg" id="logoHome" alt="Company Logo" class="lo"></a>
+                        <a><img src="../pre/que/cambiado.svg" id="logoHome" alt="Company Logo" class="lo"></a>
                         <div class="menu-toggle" id="mobile-menu">
                             <span class="bar"></span>
                             <span class="bar"></span>
@@ -62,7 +62,7 @@ $token = optional_param('token', false, PARAM_ALPHANUM);
                         </div>
                         <ul class="nav no-search">
                             <li class="nav-item" id="ocultar">
-                                <img src="../pruebaphp/que/lupa.svg" height="20px" alt="" id="lupaImagen">
+                                <img src="../pre/que/lupa.svg" height="20px" alt="" id="lupaImagen">
                                 <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
                                 <ul id="suggestions" class="dropdown-content"></ul>
                             </li>
@@ -137,7 +137,7 @@ if (!empty($SESSION->password_reset_token)) {
 if (empty($token)) {
     // This is a new password reset request.
     // Process the request; identify the user & send confirmation email.
-    include('../pruebaphp/onlystyles.php');
+    include('../pre/onlystyles.php');
     core_login_process_password_reset_request();
 } else {
     // A token has been found, but not in the session, and not from a form post.
@@ -152,4 +152,4 @@ if (empty($token)) {
         core_login_process_password_set($token);
     }
 }
-include('../pruebaphp/onlystyles.php');
+include('../pre/onlystyles.php');

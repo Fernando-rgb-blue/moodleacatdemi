@@ -1,8 +1,7 @@
 <?php
     require_once('../config.php');
     global $CFG, $OUTPUT, $PAGE, $DB, $USER;
-    $redirect = $CFG->wwwroot.'/pruebaphp/index.php';
-    $campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
+    $redirect = $CFG->wwwroot.'/pre/TermsAndConditions.php';
 
     $resultados = $DB->get_records_sql("SELECT DISTINCT titulo, url FROM {cursosp}");
 
@@ -13,9 +12,7 @@
         $ocursos[] = $resultado->titulo;
         $urls[] = $resultado->url;
     }
-
-?> 
-
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,6 +21,8 @@
     <link rel="icon" href="que/Alogo.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/ayuda.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!--FONT AWESOME-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -32,10 +31,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="js/script.js" defer></script>
-    <title>Home</title>
+    <title>Términos y Condiciones | Acatdemy</title>
 </head>
 <body>
-    <header class="page-wrapper">
+<header class="page-wrapper">
             <div class="nav-wrapper">
                 <div class="grad-bar"></div>
                     <nav class="navbar">
@@ -91,188 +90,101 @@
     </header>
     <main>
         <div class="relleno"></div>
-        <!-- parte 1 -->
-        <section class="headline">
-            <div class="tamdeH1">
-                <h1 id="descubre">Descubre un mundo de conocimiento tecnológico en línea</h1>
-            </div>
-        </section>
-        <!-- mesaje de descripcion -->
-        <section class="feature-container des">
-            <p><strong  id="somos"> Ofrecemos servicios educativos en línea especializados en la preparación para exámenes de admisión, <br>centrándonos en proporcionar cursos de calidad académica</strong></p>
-            <p>
-                <a id="mas" href="#nosotros" class="celeste">Más información</a>
-            </p>
-            
-        </section>
-
-        <div class="colorblanco">
-            <section class="features">
-                <div class="feature-container cuatropor ini">
-                    <div class="center-content">
-                        <h3 class="explora ti" id="explora">Explora el futuro de la tecnología e informática con nosotros</h3>
-                        <p class="explora" id="accede">Descubre productos innovadores y accede a cursos gratuitos para potenciar tus habilidades y conocimientos.</p>
-                        <a href="../login/signup.php" class="celeste" id="registrate">Regístrate Ahora</a>
-                    </div>
-                </div>
-                <div class="feature-container trespor ini">
-                    <img src="imagenes/estudiando-re.png" alt="imágen de alguien estudiando" >
-                </div>
-            </section>    
-        </div>
-        <!-- texto antes de los cursos -->
-        <section class="features dos">
-            <div class="feature-container cuatropor ini">
-                <div class="center-content">
-                    <h3 class="explora ti" id="descubre2">Descubre Nuestros Cursos</h3>
-                </div>
-            </div>
-        </section> 
-        
-        <!-- cursos -->
-        <?php
-            echo '<section class="features dos">';
-            // Sección 1
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[1]->direc . '" class="imagcurso" alt="imagen del curso 1">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc1">' . $campos[1]->titulo . '</span><br> <br>';
-            echo '<b id="creador1">Un curso de ' . $campos[1]->autor . '</b><br>';
-            echo '<span id="contC1">' . $campos[1]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido1">Contenido:</b> <span id="horas1">'. $campos[1]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[1]->url . '" class="celeste curso" id="ir1">Ir al curso</a>';
-            echo '</div>';
-
-
-            // Sección 2
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[2]->direc . '" class="imagcurso" alt="imagen del curso 2">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc2">' . $campos[2]->titulo . '</span><br> <br>';
-            echo '<b id="creador2">Un curso de ' . $campos[2]->autor . '</b><br>';
-            echo '<span id="contC2">' . $campos[2]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido2">Contenido:</b> <span id="horas2">'. $campos[2]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[2]->url . '" class="celeste curso" id="ir2">Ir al curso</a>';
-            echo '</div>';
-
-            // Sección 3
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[3]->direc . '" class="imagcurso" alt="imagen del curso 3">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc3">' . $campos[3]->titulo . '</span><br> <br>';
-            echo '<b id="creador3">Un curso de ' . $campos[3]->autor . '</b><br>';
-            echo '<span id="contC3">' . $campos[3]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido3">Contenido:</b> <span id="horas3">'. $campos[3]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[3]->url . '" class="celeste curso" id="ir3">Ir al curso</a>';
-            echo '</div>';  
-
-            echo '</section>';
-
-            
-            echo '<section class="features dos">';
-            // Sección 4
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[4]->direc . '" class="imagcurso" alt="imagen del curso 4">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc4">' . $campos[4]->titulo . '</span><br> <br>';
-            echo '<b id="creador4">Un curso de ' . $campos[4]->autor . '</b><br>';
-            echo '<span id="contC4">' . $campos[4]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido4">Contenido:</b> <span id="horas4">'. $campos[4]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[4]->url . '" class="celeste curso" id="ir4">Ir al curso</a>';
-            echo '</div>';
-
-
-            // Sección 5
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[5]->direc . '" class="imagcurso" alt="imagen del curso 5">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont5"><span class="tamcurso" id="nomc5">' . $campos[5]->titulo . '</span><br> <br>';
-            echo '<b id="creador5">Un curso de ' . $campos[5]->autor . '</b><br>';
-            echo '<span id="contC5">' . $campos[5]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido5">Contenido:</b> <span id="horas5">'. $campos[5]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[5]->url . '" class="celeste curso" id="ir5">Ir al curso</a>';
-            echo '</div>';
-
-            // Sección 6
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[6]->direc . '" class="imagcurso" alt="imagen del curso 6">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc6">' . $campos[6]->titulo . '</span><br> <br>';
-            echo '<b id="creador6">Un curso de ' . $campos[6]->autor . '</b><br>';
-            echo '<span id="contC6">' . $campos[6]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido6">Contenido:</b> <span id="horas6">'. $campos[6]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[6]->url . '" class="celeste curso" id="ir6">Ir al curso</a>';
-            echo '</div>';  
-
-            echo '</section>';
-
-
-        ?>
         <!-- esto esta para q no haya error en la hora de traducir -->
         <input type="text" name="country" id="autocomplete" placeholder="¿Cómo podemos ayudarte? Ejm. cursos, cuenta, pagos ..." style="display: none">
+                        
 
-        <section class="features dos">
-            <a href="../index.php" class="vercursos" id="vercursos">Ver más cursos de Acatdemy →</a>
+
+        <!--t y c -->
+        <section class="features headerayuda">
+            <h3 class="ayudaheader" id="ayudaheader">Términos y Condiciones</h3>
         </section>
-        
-        
-        <!--SOBRE NOSOTROS -->
-        <section class="features dos" id="nosotros">
-            <div class="feature-container cuatropor ini">
-                <div class="center-content">
-                    <h3 class="explora ti" id="sobre">SOBRE NOSOTROS</h3>
-                </div>
-            </div>
-        </section>
-        <div class="colorblanco">
-            <section class="features dos">
-                
-                <div class="feature-container cuatropor">
-                    <div class="tabs">
-                        <input type="radio" name="tabs" id="tabone" checked="checked">
-                        <label for="tabone" class="op1" id="n1">Nosotros</label>
-                        <div class="tab">
-                            <p>
-                                <span id="cont1n">Somos una empresa dedicada a facilitar educación de calidad en línea en las áreas de tecnología de la información y comunicación. </span>
-                                <span id="cont12n">Ofrecemos cursos interactivos, herramientas de aprendizaje y asesoramiento personalizado para ayudar a nuestros estudiantes a prepararse para una profesión en el campo de la informática. </span>
-                                <span id="cont13n">Contamos con diversos programas de estudios diseñados por expertos, además nuestra plataforma de aprendizaje en línea permite el acceso a los cursos desde cualquier lugar y en cualquier momento y estamos comprometidos en hacer del aprendizaje de la tecnología una experiencia simple, interactiva y al alcance de todos</span>
-                            </p>
-                        </div>
+        <section class="esperas">
+            <div class="columna1">
+                <div class="cont">
+                    <div>
                         
-                        <input type="radio" name="tabs" id="tabtwo">
-                        <label for="tabtwo" class="op1" id="n2">Misión</label>
-                        <div class="tab">
-                            <p><span id="cont2n">Brindar educación informática accesible y efectiva a través de nuestra plataforma de aprendizaje en línea.</span>
-                                <span id="cont21n"> Nos comprometemos a ofrecer cursos actualizados y relevantes dictados por expertos utilizando metodologías innovadoras y efectivas.</span>
-                                <span id="cont22n"></span> Impulsamos el aprendizaje individualizado y acompañamiento personalizado de cada estudiante.
-                                <span id="cont23n"> Trabajamos para transformar vidas mediante el poder educativo de la tecnología y formar profesionales preparados para los trabajos del futuro.</span></p>
-                        </div>
+                        <p>
+                            <span id="Terbi1">¡Bienvenido a nuestra plataforma </span>
+                            <b class="celeste">ACATDEMY</b> ! 
+                            <span id="Terbi2">Te invitamos a leer detenidamente los siguientes términos y condiciones antes de registrarte y utilizar nuestros servicios. </span>
+                            <span id="Terbi3">Al utilizar nuestra plataforma, aceptas cumplir con estos términos y condiciones, si no estás de acuerdo con alguno de ellos, te pedimos que no utilices nuestros servicios.</span>
                         
-                        <input type="radio" name="tabs" id="tabthree">
-                        <label for="tabthree" class="op1" id="n3">Visión</label>
-                        <div class="tab">
-                            <p id="cont3n">Somos una empresa que quiere situarse en los próximos años como referente en la educación informática en línea en Perú gracias a nuestra oferta de cursos de calidad, herramientas innovadoras y docentes altamente capacitados, anhelamos convertirnos en verdaderos expertos del campo informático tanto a las personas que aprueben nuestros cursos como a quienes asesoramos, para que puedan acceder a las mejores oportunidades laborales y así contribuir al desarrollo digital de nuestra sociedad en la próxima década.</p>
-                        </div>
+                        </p><br><br>
+
+                        <p class="negrita"><b id="ryp0">1. Registro y Privacidad</b></p><br>
+                        <p>
+                            <span id="ryp1">Para acceder a nuestros cursos, debes registrarte en la plataforma proporcionando información personal. </span>
+                            <span id="ryp2">La protección de tus datos personales es de suma importancia para nosotros, y garantizamos su seguridad y privacidad de acuerdo con las leyes aplicables. </span>
+                            <span id="ryp3">Para obtener más información, consulta nuestra Política de Privacidad.</span>
+                            <br><br>
+                            <span id="ryp4">Al registrarte, eres responsable de mantener la confidencialidad de tu nombre de usuario y contraseña, y aceptas que eres el único responsable de cualquier actividad realizada en tu cuenta.</span>
+                            
+                        </p><br><br>
+
+                        <p class="negrita"><b id="iyp0">2. Inscripción y Pagos</b></p><br>
+                        <p>
+                            <span id="iyp1">Puedes inscribirte en los cursos disponibles en nuestra plataforma directamente a través de la misma, se aceptan pagos mediante transferencia bancaria, depósito o PayPal. </span>
+                            <span id="iyp2">Los detalles de pago se proporcionarán durante el proceso de inscripción en un curso.</span>
+                            <br><br>
+                            <span id="iyp3">Los precios de los cursos se muestran en la plataforma y pueden estar sujetos a cambios. </span>
+                            <span id="iyp4">Te comprometes a pagar el monto total correspondiente a tu inscripción en un curso antes de acceder al contenido.</span>
+                            
+                            
+                        </p><br><br>
+
+                        <p class="negrita"><b id="upc0">3. Uso de la Plataforma y Contenido</b></p><br>
+                        <p>
+                            <span id="upc1">Nuestra plataforma está diseñada con Moodle para el aprendizaje en línea. </span>
+                            <span id="upc2">Al utilizar nuestros cursos y materiales, aceptas no copiar, distribuir, modificar o utilizar el contenido de manera inapropiada.</span>
+                            <br><br>
+                            <span id="upc3">Te comprometes a no utilizar la plataforma con fines ilegales o inmorales, incluyendo el acoso, la difamación, la violación de derechos de autor y cualquier otra actividad prohibida por la ley.</span>
+                            
+                            
+                        </p><br><br>
+
+                        <p class="negrita"><b id="pi0">4. Propiedad Intelectual</b></p><br>
+                        <p>
+                            <span id="pi1">Todos los derechos de propiedad intelectual relacionados con el contenido de la plataforma (textos, imágenes, videos, software, etc.) son propiedad del Centro de Altas Tecnologías E.I.R.L. </span>
+                            <span id="pi2">o de sus respectivos propietarios, y están protegidos por las leyes de propiedad intelectual.</span>
+
+                        </p><br><br>
+                        
+                        <p class="negrita"><b id="r0">5. Responsabilidad</b></p><br>
+                        <p>
+                            <span id="r1">Si bien nos esforzamos por proporcionar un servicio de alta calidad, no garantizamos la disponibilidad ininterrumpida de la plataforma o la precisión del contenido. </span>
+                            <br><br>
+                            <span id="r2">El Centro de Altas Tecnologías E.I.R.L.  </span>
+                            <span id="r3">no será responsable de ningún daño directo, indirecto, especial, incidental o consecuente que resulte del uso de nuestros servicios o de la imposibilidad de usarlos.</span>
+                            
+                        </p><br><br>
+
+                        <p class="negrita"><b id="ctc0">6. Cambios en los Términos y Condiciones</b></p><br>
+                        <p>
+                            <span id="ctc1">Nos reservamos el derecho de modificar estos términos y condiciones en cualquier momento. </span>
+                            <span id="ctc2">Las modificaciones serán efectivas una vez publicadas en la plataforma. </span>
+                            <span id="ctc3">Te recomendamos revisar regularmente estos términos.</span>
+                            
+                        </p><br><br>
+
+                        <p class="negrita"><b id="tdc0">7. Terminación de Cuenta</b></p><br>
+                        <p>
+                            <span id="tdc1">Nos reservamos el derecho de suspender o cancelar tu cuenta en caso de incumplimiento de estos términos y condiciones.</span>
+                            
+                        </p><br><br>
+
+                        <p class="negrita"><b id="cn0">8. Contacto</b></p><br>
+                        <p>
+                            <span id="cn1">Si tienes alguna pregunta o inquietud sobre estos términos y condiciones, no dudes en ponerte en contacto con nosotros a través del correo emendozatorres@gmail.com .</span>
+                            
+                        </p><br><br>
                     </div>
                 </div>
-                <div class="feature-container trespor">
-                    <img src="que/cambiado.svg" alt="Flexbox Feature" height="150px">
-                </div>
-            </section>
-        </div>
-        
+            </div>
+            </div>
+        </section>  
+
+
         <!-- descubre -->
         <section class="features descubre">
             <div class="feature-container sesentapor ini">
@@ -340,10 +252,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>    
 
-
-        
     </main>
     <footer>
         <div class="footer">
@@ -374,17 +284,14 @@
                 </ul>
             </div>
         </div>
-    </footer>
+    </footer> 
     
     
         <script>
-
-            // inicio de busqueda
-            // Array de opciones de sugerencias ocursos
+            // Array de opciones de sugerencias
             // const opciones = ["programacion en python", "redes y topologias", "switch"];
             const opciones = <?php echo json_encode($ocursos); ?>;
             const opurl = <?php echo json_encode($urls); ?>;
-
             const lupaImagen = document.getElementById("lupaImagen");
 
             // Maneja el clic en la imagen de la lupa
@@ -484,9 +391,8 @@
                     document.getElementById("suggestions").style.display = "none";
                 }
             });
-            // fin de busqueda
 
-
+            
             // para poner un 'a' a mi img del logo
             var miImagen2 = document.getElementById('logoHome');
 
@@ -495,15 +401,7 @@
                 // Redirigimos la página a "google.com" al hacer clic en la imagen
                 window.location.href = 'index.php';
             });
+            
         </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

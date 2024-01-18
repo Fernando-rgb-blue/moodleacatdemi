@@ -206,10 +206,10 @@ $event->trigger();
             // Obtén el elemento por su clase
             var miEnlace = document.querySelector('.navbar-brand.d-none.d-md-flex.align-items-center.m-0.mr-4.p-0.aabtn');
 
-            // Verifica si se encontró el elemento
+            Verifica si se encontró el elemento
             if (miEnlace) {
                 // Cambia el atributo href
-                miEnlace.href = '../pruebaphp/index.php';
+                miEnlace.href = '../pre/index.php';
             }
 
             document.addEventListener('DOMContentLoaded', function() {

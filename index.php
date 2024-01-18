@@ -166,7 +166,7 @@ echo $OUTPUT->footer();
             // Verifica si se encontró el elemento
             if (miEnlace) {
                 // Cambia el atributo href
-                miEnlace.href = 'pruebaphp/index.php';
+                miEnlace.href = 'pre/index.php';
             }
 
             document.addEventListener('DOMContentLoaded', function() {
