@@ -51,7 +51,7 @@
                                 <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
                                 <ul id="suggestions" class="dropdown-content"></ul>
                             </li>
-                            <li class="nav-item"><a href="../index.php" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="courses.php" id="cursos">Cursos</a></li>
                             <li class="nav-item"><a href="help.php" id="ayuda">Ayuda</a></li>
                             <li class="nav-item">
                                 <div class="dropdown" id="idiomaDropdown">
@@ -65,7 +65,7 @@
                                     </div>
                                 </div>
                             </li>
-
+                            <li class="nav-item"><a href="../index.php" id="pre">Pre</a></li>
                             <!-- <li class="nav-item iniciar"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/INICIO_SESION/index.html">Ingresar</a></li>
                             <li class="nav-item crear"><a id="registrarse" href="#">Registrarse</a></li> -->
                             <?php
@@ -280,7 +280,8 @@
             <div class="row">
                 <ul>
                     <li><a href="index.php#nosotros" id="fo2">Sobre nosotros</a></li>
-                    <li><a href="../index.php" id="fo3">Cursos</a></li>
+                    <li><a href="courses.php" id="fo3">Cursos</a></li>
+                    <li><a href="../index.php">Pre</a></li>
                     <li><a href="TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
                     <li><a href="help.php#explora" id="fo6">Contáctanos</a></li>
                     <li><a href="help.php" id="fo7">Ayuda</a></li>
@@ -291,12 +292,10 @@
                 <ul>
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
                 </ul>
             </div>
         </div>
-    </footer>                   
+    </footer>                    
         <script>
 
             // inicio de busqueda
@@ -361,7 +360,7 @@
 
             // Función para manejar el redireccionamiento
             function redirigirURL(url) {
-                window.location.href = url;
+                window.open(url, '_blank');
             }
 
             // Maneja el clic en una sugerencia para llenar la barra de búsqueda

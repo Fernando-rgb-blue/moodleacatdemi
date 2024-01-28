@@ -68,7 +68,7 @@
                                 <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
                                 <ul id="suggestions" class="dropdown-content"></ul>
                             </li>
-                            <li class="nav-item"><a href="../index.php" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="../pre/courses.php" id="cursos">Cursos</a></li>
                             <li class="nav-item"><a href="../pre/help.php" id="ayuda">Ayuda</a></li>
                             <li class="nav-item">
                                 <div class="dropdown" id="idiomaDropdown">
@@ -82,6 +82,7 @@
                                     </div>
                                 </div>
                             </li>
+                            <li class="nav-item"><a href="../index.php" id="ayuda">Pre</a></li>
                             <?php
                                 if (!empty($USER->firstname) && !empty($USER->lastname) && strtoupper(substr($USER->firstname, 0, 1)) !='&' && strtoupper($USER->firstname) !='INVITADO') {
                                     echo '<li class="nav-item iniciar">';
@@ -177,7 +178,7 @@
 
             // Función para manejar el redireccionamiento
             function redirigirURL(url) {
-                window.location.href = url;
+                window.open(url, '_blank');
             }
 
             // Maneja el clic en una sugerencia para llenar la barra de búsqueda

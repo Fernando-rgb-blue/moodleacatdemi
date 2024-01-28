@@ -2,7 +2,9 @@
     require_once('../config.php');
     global $CFG, $OUTPUT, $PAGE, $DB, $USER;
     $redirect = $CFG->wwwroot.'/pre/index.php';
-    $campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
+    // $campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
+    $campos = $DB->get_records_sql("SELECT * FROM {cursosp} WHERE id IN (8, 9, 10, 11, 12, 13)");
+
 
     $resultados = $DB->get_records_sql("SELECT DISTINCT titulo, url FROM {cursosp}");
 
@@ -51,7 +53,7 @@
                                 <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
                                 <ul id="suggestions" class="dropdown-content"></ul>
                             </li>
-                            <li class="nav-item"><a href="../index.php" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="courses.php" id="cursos">Cursos</a></li>
                             <li class="nav-item"><a href="help.php" id="ayuda">Ayuda</a></li>
                             <li class="nav-item">
                                 <div class="dropdown" id="idiomaDropdown">
@@ -65,7 +67,7 @@
                                     </div>
                                 </div>
                             </li>
-
+                            <li class="nav-item"><a href="../index.php" id="pre">Pre</a></li>
                             <!-- <li class="nav-item iniciar"><a id="iniciar" href="http://167.172.137.234/moodleacatdemi/Acatdemy/INICIO_SESION/index.html">Ingresar</a></li>
                             <li class="nav-item crear"><a id="registrarse" href="#">Registrarse</a></li> -->
                             <?php
@@ -99,7 +101,9 @@
         </section>
         <!-- mesaje de descripcion -->
         <section class="feature-container des">
-            <p><strong  id="somos"> Ofrecemos servicios educativos en línea especializados en la preparación para exámenes de admisión, <br>centrándonos en proporcionar cursos de calidad académica</strong></p>
+            <p class="arreglar"><strong  id="somos"> Ofrecemos una plataforma educativa en línea especializada en cursos virtuales sobre temas tecnológicos,</strong></p>
+            <p><strong  id="somos2">dirigidos a estudiantes y profesionales de diversas disciplinas</strong></p>
+            
             <p>
                 <a id="mas" href="#nosotros" class="celeste">Más información</a>
             </p>
@@ -112,110 +116,45 @@
                     <div class="center-content">
                         <h3 class="explora ti" id="explora">Explora el futuro de la tecnología e informática con nosotros</h3>
                         <p class="explora" id="accede">Descubre productos innovadores y accede a cursos gratuitos para potenciar tus habilidades y conocimientos.</p>
-                        <a href="../login/signup.php" class="celeste" id="registrate">Regístrate Ahora</a>
+                        <!-- <a href="../login/signup.php" class="celeste" id="registrate">Regístrate Ahora</a> -->
                     </div>
                 </div>
                 <div class="feature-container trespor ini">
-                    <img src="imagenes/estudiando-re.png" alt="imágen de alguien estudiando" >
+                    <img src="imagenes/curOp4.png" alt="imágen de alguien estudiando" >
                 </div>
             </section>    
         </div>
+
         <!-- texto antes de los cursos -->
         <section class="features dos">
             <div class="feature-container cuatropor ini">
                 <div class="center-content">
-                    <h3 class="explora ti" id="descubre2">Descubre Nuestros Cursos</h3>
+                    <h3 class="explora ti" id="descubre2">Descubre Nuestros Cursos Profesionales</h3>
                 </div>
             </div>
         </section> 
         
         <!-- cursos -->
         <?php
-            echo '<section class="features dos">';
-            // Sección 1
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[1]->direc . '" class="imagcurso" alt="imagen del curso 1">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc1">' . $campos[1]->titulo . '</span><br> <br>';
-            echo '<b id="creador1">Un curso de ' . $campos[1]->autor . '</b><br>';
-            echo '<span id="contC1">' . $campos[1]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido1">Contenido:</b> <span id="horas1">'. $campos[1]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[1]->url . '" class="celeste curso" id="ir1">Ir al curso</a>';
-            echo '</div>';
-
-
-            // Sección 2
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[2]->direc . '" class="imagcurso" alt="imagen del curso 2">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc2">' . $campos[2]->titulo . '</span><br> <br>';
-            echo '<b id="creador2">Un curso de ' . $campos[2]->autor . '</b><br>';
-            echo '<span id="contC2">' . $campos[2]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido2">Contenido:</b> <span id="horas2">'. $campos[2]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[2]->url . '" class="celeste curso" id="ir2">Ir al curso</a>';
-            echo '</div>';
-
-            // Sección 3
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[3]->direc . '" class="imagcurso" alt="imagen del curso 3">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc3">' . $campos[3]->titulo . '</span><br> <br>';
-            echo '<b id="creador3">Un curso de ' . $campos[3]->autor . '</b><br>';
-            echo '<span id="contC3">' . $campos[3]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido3">Contenido:</b> <span id="horas3">'. $campos[3]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[3]->url . '" class="celeste curso" id="ir3">Ir al curso</a>';
-            echo '</div>';  
-
-            echo '</section>';
-
+            echo '<section class="features dos gridd">';
             
-            echo '<section class="features dos">';
-            // Sección 4
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[4]->direc . '" class="imagcurso" alt="imagen del curso 4">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc4">' . $campos[4]->titulo . '</span><br> <br>';
-            echo '<b id="creador4">Un curso de ' . $campos[4]->autor . '</b><br>';
-            echo '<span id="contC4">' . $campos[4]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido4">Contenido:</b> <span id="horas4">'. $campos[4]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[4]->url . '" class="celeste curso" id="ir4">Ir al curso</a>';
-            echo '</div>';
-
-
-            // Sección 5
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[5]->direc . '" class="imagcurso" alt="imagen del curso 5">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont5"><span class="tamcurso" id="nomc5">' . $campos[5]->titulo . '</span><br> <br>';
-            echo '<b id="creador5">Un curso de ' . $campos[5]->autor . '</b><br>';
-            echo '<span id="contC5">' . $campos[5]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido5">Contenido:</b> <span id="horas5">'. $campos[5]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[5]->url . '" class="celeste curso" id="ir5">Ir al curso</a>';
-            echo '</div>';
-
-            // Sección 6
-            echo '<div class="feature-container curceleste">';
-            echo '<img src="' . $campos[6]->direc . '" class="imagcurso" alt="imagen del curso 6">';
-            echo '<div class="contenidocurso">';
-            echo '<p id="cont1"><span class="tamcurso" id="nomc6">' . $campos[6]->titulo . '</span><br> <br>';
-            echo '<b id="creador6">Un curso de ' . $campos[6]->autor . '</b><br>';
-            echo '<span id="contC6">' . $campos[6]->descripcion . '</span><br>';
-            echo '<br>';
-            echo '<b id="contenido6">Contenido:</b> <span id="horas6">'. $campos[6]->horas . '</span></p>';
-            echo '</div>';
-            echo '<a href="' . $campos[6]->url . '" class="celeste curso" id="ir6">Ir al curso</a>';
-            echo '</div>';  
-
+            foreach ($campos as $i => $campo) {
+                echo '<a target="_blank" href="' . $campo->url . '" class="completo" id="ir' . ($i + 1) . '">';
+                echo '<div class="grid-container curceleste">';
+                echo '<div class="feature-container gridd">';
+                echo '<img src="' . $campo->direc . '" class="imagcurso" alt="imagen del curso ' . ($i + 1) . '">';
+                echo '<div class="contenidocurso">';
+                echo '<p><span class="tamcurso" id="nomc' . ($i + 1) . '">' . $campo->titulo . '</span><br><br>';
+                echo '<b id="creador' . ($i + 1) . '">Un curso de ' . $campo->autor . '</b><br>';
+                echo '<span id="contC' . ($i + 1) . '">' . $campo->descripcion . '</span><br><br>';
+                echo '<b id="contenido' . ($i + 1) . '">Contenido:</b> <span id="horas' . ($i + 1) . '">' . $campo->horas . '</span></p>';
+                echo '</div>';
+                // echo '<a target="_blank" href="' . $campo->url . '" class="ce" id="ir' . ($i + 1) . '">Ir al curso</a>';
+                echo '</div>';
+                echo '</div>';
+                echo '</a>';
+            }
+            
             echo '</section>';
 
 
@@ -224,7 +163,7 @@
         <input type="text" name="country" id="autocomplete" placeholder="¿Cómo podemos ayudarte? Ejm. cursos, cuenta, pagos ..." style="display: none">
 
         <section class="features dos">
-            <a href="../index.php" class="vercursos" id="vercursos">Ver más cursos de Acatdemy →</a>
+            <a href="courses.php" class="vercursos" id="vercursos">Ver más cursos →</a>
         </section>
         
         
@@ -273,6 +212,22 @@
             </section>
         </div>
         
+        <div class="colorblanco">
+            <section class="features">
+                <div class="feature-container trespor ini">
+                    <img src="imagenes/estudiando-re.png" alt="imágen de alguien estudiando" >
+                </div>
+                <div class="feature-container cuatropor ini">
+                    <div class="center-content">
+                        <h3 class="explora ti" id="explora2">Descubre nuestros cursos pre, diseñados para estudiantes de academias</h3>
+                        <p class="explora" id="accede2">Descubre cursos como: historia, química, matemática, entre otros.</p>
+                        <a href="../index.php" class="celeste" id="registrate">Explorar ahora</a>
+                    </div>
+                </div>
+                
+            </section>    
+        </div>
+
         <!-- descubre -->
         <section class="features descubre">
             <div class="feature-container sesentapor ini">
@@ -358,7 +313,8 @@
             <div class="row">
                 <ul>
                     <li><a href="index.php#nosotros" id="fo2">Sobre nosotros</a></li>
-                    <li><a href="../index.php" id="fo3">Cursos</a></li>
+                    <li><a href="courses.php" id="fo3">Cursos</a></li>
+                    <li><a href="../index.php">Pre</a></li>
                     <li><a href="TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
                     <li><a href="help.php#explora" id="fo6">Contáctanos</a></li>
                     <li><a href="help.php" id="fo7">Ayuda</a></li>
@@ -369,8 +325,6 @@
                 <ul>
                 <a href="#"><i class="fa fa-facebook"></i></a>
                 <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-youtube"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
                 </ul>
             </div>
         </div>
@@ -442,7 +396,7 @@
 
             // Función para manejar el redireccionamiento
             function redirigirURL(url) {
-                window.location.href = url;
+                window.open(url, '_blank');
             }
 
             // Maneja el clic en una sugerencia para llenar la barra de búsqueda

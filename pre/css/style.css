@@ -102,7 +102,7 @@ img#logoHome {
 .navbar ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(6,1fr);
+    grid-template-columns: repeat(7,1fr);
     justify-self: end;
 }
 
@@ -317,12 +317,18 @@ tecnología de la información y comunicación. */
     flex-basis: 43%;
     margin-top: 10px;
 }
+
 .feature-container p {
     color: #3f3f3f;
     text-align: center;
     line-height: 1.4;
     margin-bottom: 15px;
 }
+
+.feature-container p.arreglar{
+    margin-bottom: 0px;
+}
+
 .feature-container img {
     width: 100%;
     margin-bottom: 15px;
@@ -345,7 +351,7 @@ tecnología de la información y comunicación. */
     line-height: 1.4;
 }
 .explora.ti{
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: normal;
     justify-content: center;
     align-items: center;
@@ -489,6 +495,108 @@ a.celeste.test:hover{
 }
 /* FIN CONTENIDO DEL MAIN */
 
+/* inicio cursos general */
+
+.filtros .containerfil {
+    display: flex;
+    justify-content: space-between;
+}
+
+.final {
+    display: flex;
+    align-items: center;
+}
+
+.tih4 {
+    margin-right: 10px; /* Ajusta el margen según sea necesario */
+}
+
+.containerfil{
+    margin-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+select {
+    width: 150px; /* Ajusta el ancho según sea necesario */
+    height: 30px;
+}
+
+.aplicar{
+    margin-left: 5px;
+    width: 90px;
+    height: 30px;
+    background: #cecece;
+}
+.aplicar:hover{
+    background: #8aebf6;
+}
+/* ddd */
+.features.dos.gridd {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.grid-container.curceleste {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background-color: #c7f1ed;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.feature-container.gridd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.imagcurso {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.contenidocurso {
+    text-align: left;
+    flex: 1;
+}
+
+/* .ce {
+    color: #ffffff;
+    background-color: #00a6d5;
+    
+    text-decoration: none;
+
+    padding: 8px 30px;
+    font-size: 17px;
+}
+
+.ce:hover{
+    background-color: #BEC0BF;
+} */
+
+.completo{
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Estilo cuando se pasa el ratón sobre el enlace 'a' */
+.completo:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al 110% */
+}
+
+.completo:hover .grid-container.curceleste {
+    background-color: #adfaf2; /* Cambia el fondo a negro al pasar el ratón sobre el enlace 'a' */
+}
+
+/* fin cursos general */
 
 /* INICIO footer */
 .footer{

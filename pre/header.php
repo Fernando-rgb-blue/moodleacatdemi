@@ -30,7 +30,8 @@
                 <div class="row change">
                     <ul class="noting">
                         <li><a href="../pre/index.php#nosotros" id="fo2">Sobre nosotros</a></li>
-                        <li><a href="../index.php" id="fo3">Cursos</a></li>
+                        <li><a href="../pre/courses.php" id="fo3">Cursos</a></li>
+                        <li><a href="../index.php">Pre</a></li>
                         <li><a href="../pre/TermsAndConditions.php" id="fo4">Términos y Condiciones</a></li>
                         <li><a href="../pre/help.php#explora" id="fo6">Contáctanos</a></li>
                         <li><a href="../pre/help.php" id="fo7">Ayuda</a></li>
@@ -41,8 +42,6 @@
                     <ul class="noting">
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-youtube"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
                     </ul>
                 </div>
             </div>
