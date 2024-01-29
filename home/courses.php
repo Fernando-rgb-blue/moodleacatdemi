@@ -1,7 +1,7 @@
 <?php
     require_once('../config.php');
     global $CFG, $OUTPUT, $PAGE, $DB, $USER;
-    $redirect = $CFG->wwwroot.'/pre/courses.php';
+    $redirect = $CFG->wwwroot.'/home/courses.php';
     // $campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
     // $campos = $DB->get_records_sql("SELECT * FROM {cursosp} WHERE filtro = 'red'");
     $resultados = $DB->get_records_sql("SELECT DISTINCT titulo, url FROM {cursosp}");

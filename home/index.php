@@ -1,7 +1,7 @@
 <?php
     require_once('../config.php');
     global $CFG, $OUTPUT, $PAGE, $DB, $USER;
-    $redirect = $CFG->wwwroot.'/pre/index.php';
+    $redirect = $CFG->wwwroot.'/home/index.php';
     // $campos = $DB->get_records_sql("SELECT * FROM {cursosp}"); 
     $campos = $DB->get_records_sql("SELECT * FROM {cursosp} WHERE id IN (8, 9, 10, 11, 12, 13)");
 

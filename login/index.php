@@ -56,7 +56,7 @@
             <div class="nav-wrapper">
                 <div class="grad-bar"></div>
                     <nav class="navbar">
-                        <a><img src="../pre/que/cambiado.svg" id="logoHome2" alt="Company Logo" class="lo"></a>
+                        <a><img src="../home/que/cambiado.svg" id="logoHome2" alt="Company Logo" class="lo"></a>
                         <div class="menu-toggle" id="mobile-menu">
                             <span class="bar"></span>
                             <span class="bar"></span>
@@ -64,12 +64,12 @@
                         </div>
                         <ul class="nav no-search">
                             <li class="nav-item" id="ocultar">
-                                <img src="../pre/que/lupa.svg" height="20px" alt="" id="lupaImagen">
+                                <img src="../home/que/lupa.svg" height="20px" alt="" id="lupaImagen">
                                 <input type="text" id="search-input" class="search-input" placeholder="Buscar curso...">
                                 <ul id="suggestions" class="dropdown-content"></ul>
                             </li>
-                            <li class="nav-item"><a href="../pre/courses.php" id="cursos">Cursos</a></li>
-                            <li class="nav-item"><a href="../pre/help.php" id="ayuda">Ayuda</a></li>
+                            <li class="nav-item"><a href="../home/courses.php" id="cursos">Cursos</a></li>
+                            <li class="nav-item"><a href="../home/help.php" id="ayuda">Ayuda</a></li>
                             <li class="nav-item">
                                 <div class="dropdown" id="idiomaDropdown">
                                     <a><span id="idioma">Idioma</span></a>
@@ -113,7 +113,7 @@
 
             // Agregamos un evento de clic a la imagen
             miImagenhome2.addEventListener('click', function() {
-                window.location.href = '../pre/index.php';
+                window.location.href = '../home/index.php';
             });            
             
             // inicio de busqueda
@@ -588,5 +588,5 @@ if (isloggedin() and !isguestuser()) {
 echo $OUTPUT->footer();
 
 
-include('../pre/header.php');
+include('../home/header.php');
 ?>

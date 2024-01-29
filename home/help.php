@@ -1,7 +1,7 @@
 <?php
     require_once('../config.php');
     global $CFG, $OUTPUT, $PAGE, $DB, $USER;
-    $redirect = $CFG->wwwroot.'/pre/help.php';
+    $redirect = $CFG->wwwroot.'/home/help.php';
 
     $resultados = $DB->get_records_sql("SELECT DISTINCT titulo, url FROM {cursosp}");
 
